@@ -1,0 +1,155 @@
+@use '@/shared/styles/variables.scss' as *;
+
+@keyframes modalOverlayFadeIn {
+  from {
+    backdrop-filter: blur(0px);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes modalContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modalOverlayFadeIn .4s forwards;
+}
+
+.modalContainer {
+  width: clmp(22rem, 28rem);
+  background-color: var(--bg-l-color);
+  border-radius: 2rem;
+  z-index: 101;
+  outline: 1px solid #ffffff23;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: modalContentFadeIn $defl-transit forwards;
+  animation-delay: 0.1s;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.modalContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  &_logo {
+    width: 100%;
+    @include flex-row;
+
+    img {
+      height: clmp(1.5rem, 1.7rem);
+      transition: $defl-transit;
+    }
+  }
+
+  &_categories {
+    display: flex;
+    justify-content: space-between;
+    gap: clmp(1.2rem, 2rem);
+
+    &_button {
+      flex: 1;
+      border-radius: 1.5rem;
+      height: 2.7rem;
+      background-color: var(--bg-input-color);
+      outline: 1px solid #ffffff11;
+      transition: $defl-transit;
+      font-weight: 600;
+      font-size: clmp(.8rem, 1rem);
+
+      &--active {
+        background-color: var(--bg-accent-color);
+        outline: none;
+      }
+
+      &:hover {
+        opacity: .8;
+      }
+
+      &:active {
+        transition: .1s ease-in-out;
+        filter: brightness(1.5);
+      }
+    }
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+
+    &_submit {
+      background-color: var(--bg-accent-color);
+      color: #fff;
+      border-radius: 1rem;
+      margin-top: clmp(1.2rem, 1.5rem);
+      height: clmp(2.8rem, 3rem);
+      transition: $defl-transit;
+      font-size: clmp(.9rem, 1rem);
+      font-weight: 600;
+
+      &:hover {
+        opacity: .8;
+      }
+
+      &:active {
+        transition: .1s ease-in-out;
+        filter: brightness(1.5);
+      }
+
+      &:disabled {
+        filter: saturate(0);
+        opacity: .5;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+// [data-theme="dark"] {
+ 
+// }
+
+[data-theme="light"] {
+  .modalContent_logo {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(55%) saturate(3697%) hue-rotate(118deg) brightness(97%) contrast(87%);
+  }
+
+  .modalContent_categories_button {
+    color: var(--f-color);
+    background-color: #ebebeb;
+    outline-color: #cac9c9;
+
+    &--active {
+      color: var(--bg-color);
+      background-color: var(--bg-accent-color);
+    }
+  }
+}

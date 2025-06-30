@@ -1,0 +1,329 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.transaction__section {
+  display: flex;
+  flex-direction: row;
+  gap: clmp(.8rem, 1rem);
+  @media (max-width: $bp_mobile) {
+    flex-direction: column;
+  }
+}
+
+.transaction__container {
+  padding: clmp(1rem, 1.5rem);
+  flex: 1;
+  width: 100%;
+}
+
+.transaction__left {
+  padding: 0;
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
+  &__container {
+    padding: clmp(1rem, 1.5rem);
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: clmp(.8rem, 1.3rem)
+  }
+}
+
+.transaction__left__center, .transaction__left__bottom {
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  gap: 3rem;
+
+  .exchanger__currency__center {
+    width: max-content;
+  }
+}
+
+.transaction__info {
+  display: flex;
+  flex-direction: row;
+  gap: clmp(3rem, 0.5rem);
+}
+
+.transaction__amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.transaction__direction {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon__container {
+    $size: clmp(3rem, 3.8rem);
+    width: $size;
+    min-width: $size;
+    height: $size;
+    min-height: $size;
+    border-radius: 1rem;
+    outline: 1px solid var(--outline-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_get {
+      transform: rotate(180deg);
+    }
+  }
+
+  .icon {
+    width: 40%;
+    height: 40%;
+    path {
+      stroke: var(--ff-color)
+    }
+  }
+  
+}
+
+.transaction__center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(2.3rem, 3vw, 3.5rem);
+  position: relative;
+
+  .qr-button__container{
+    $size: clmp(2rem, 3rem);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $size;
+    min-height: $size;
+    width: $size;
+    min-width: $size;
+    outline: 1px solid var(--outline-color);
+    border-radius: clmp(0.5rem, 1rem);
+    transition: $defl-transit;
+    cursor: pointer;
+
+
+    &:hover, &:active {
+      background-color: var(--bg-accent-color);
+      .qr-button__icon path {
+        stroke: #fff;
+        stroke-opacity: 1;
+      }
+    }
+
+    &:active {
+      transition: .2s;
+      transform: scale(.5);
+    }
+  }
+
+  .qr-button__icon {
+    width: 50%;
+    height: 50%;
+
+    path {
+      transition: $defl-transit;
+      stroke: var(--ff-color);
+    }
+  }
+
+  &__title {
+    width: 100%;
+    .text_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 78%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: clmp(1.2rem, 1.5rem);
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+}
+
+.transaction__timer {
+  flex: 0.35;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+  @media(max-width: $bp_mobile) {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+
+  .text_h1, .text_h4 {
+    color: #fff;
+  }
+
+  &__bottom, &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clmp(.8rem, 1rem);
+  }
+
+  &__top {
+    gap: clmp(0rem, 0.5rem);
+    @media(max-width: $bp_mobile) {
+      min-width: arem(10rem);
+    }
+
+    .text_h4 {
+      line-height: clmp(1rem, 1.5rem);
+    }
+  }
+
+  .text_timer {
+    font-size: clamp(2rem, 3.1vw, 4rem);
+  }
+
+  .text_copy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clmp(0.7rem, 0.8rem);
+    cursor: pointer;
+    color: var(--ff-silent-color);
+
+    &:active {
+      transition: .2s;
+      color: #fff;
+    }
+  }
+
+  .copy-icon {
+    $size: 1rem;
+    width: $size;
+    min-width: $size;
+    height: $size;
+    min-height: $size;
+    transition: .2s;
+
+    &:hover {
+      transform: scale(1.2);
+      path {
+        stroke-opacity: .8;
+      }
+    }
+
+    &:active {
+        transition: .1s;
+        transform: scale(.8);
+        path {
+          stroke-opacity: 4;
+        }
+    }
+  }
+}
+
+.text_label {
+  color: var(--ff-silent-color);
+  transition: $defl-transit;
+}
+
+.t343wqd {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.text_desclaimer {
+  font-size: clmp(.65rem, .8rem);
+  color: var(--ff-silent-color);
+  font-weight: 500;
+  width: 73%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  @media (max-width: $bp_mobile) {
+    width: 100%;
+  }
+}
+
+.final__icon {
+  height: 100%;
+  width: 100%;
+  @media (max-width: $bp_mobile) {
+    max-width: arem(10rem);
+  }
+}
+
+.transaction__final__buttons {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  @media(max-width: 1750px) {
+    flex-direction: column;
+  }
+
+  .button {
+    padding: 0 2rem;
+    height: clmp(3rem, 4.5rem);
+    min-height: clmp(3rem, 4.5rem);
+    flex: 1;
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .text_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: clmp(0.5rem, 1rem);
+    }
+
+    .icon {
+      $size: arem(1.8);
+      height: $size;
+      min-height: $size;
+      width: $size;
+      min-width: $size;
+
+      path {
+        transition: $defl-transit;
+        stroke: var(--ff-color);
+      }
+
+      &__contact-manager {
+        transform: rotate(135deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.EmailInput {
+  &_container {
+    position: relative;
+    display: inline-block;
+
+    @include flex-row;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &_input {
+    @include input-base;
+
+    &_error {
+      border: solid 2px #e74c3c;
+      outline: none;
+    }
+  }
+
+  &_icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: clmp(.8rem, 1.1rem);
+    pointer-events: none;
+    transition: filter .3s;
+    filter: var(--icon-input-color);
+  }
+
+  &_errorMessage {
+    @include input-error-message
+  }
+}

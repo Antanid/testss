@@ -1,0 +1,363 @@
+@use '@/shared/styles/variables.scss' as *;
+
+
+// #################################################
+.page {
+  padding-top: clmp(7rem, 10rem);
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  gap: 0;
+  display: block;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+// #################################################
+.section {
+  @include padding-container(0);
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clmp(1.5rem, 2.5rem);
+}
+
+
+// #################################################
+.container {
+
+  &_default {
+    background-color: var(--bg-cont-color);
+    border-radius: 1rem;
+    outline: 1px solid var(--outline-color);
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: all $defl-transit;
+  }
+
+  &_accent {
+    background-color: var(--bg-accent-color);
+    outline: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: all $defl-transit;
+  }
+}
+
+
+// #################################################
+.text {
+  all: unset;
+  font-family: $ff-base;
+  color: var(--ff-color);
+  transition: all $defl-transit;
+
+  &_h1 {
+    font-size: clmp(2rem, 4rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  &_h2 {
+    font-size: clmp(1.3rem, 2.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &_h3 {
+    font-size: clmp(1rem, 1.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &_h4 {
+    font-size: clmp(.8rem, 1.1rem);
+    font-weight: 500;
+    line-height: 1;
+
+    &_light {
+      font-weight: 400;
+    }
+
+    &_gray {
+      color: var(--ff-muted-color)
+    }
+
+    &_dark-gray {
+      color: var(--ff-silent-color);
+    }
+  }
+
+  &_h5 {
+    font-size: clmp(.7rem, .9rem);
+    font-weight: 500;
+    line-height: .9;
+  }
+
+  &_p {
+    font-size: clmp(.75rem, 1rem);
+    font-weight: 600;
+
+    &_light {
+      font-size: clmp(.65rem, .87rem);
+      font-weight: 400;
+      color: var(--p-light-color);
+    }
+  }
+}
+
+// #################################################
+.button {
+  background-color: var(--bg-l-color);
+  outline: 1px solid var(--outline-color);
+  border-radius: 1.5rem;
+  padding: .8rem clmp(2rem, 3rem);
+  font-weight: 500;
+  font-size: clmp(.9rem, 1.1rem);
+  transition: all $defl-transit;
+
+  &:hover {
+    background-color: var(--bg-l-color-hover);
+  }
+
+  &:active {
+    transition: transform .1s ease-in-out;
+    transform: scale(.9);
+  }
+
+  &_active {
+    background-color: var(--bg-accent-color);
+    color: #fff;
+    pointer-events: none;
+  }
+
+  &_accent {
+    background-color: var(--bg-accent-color);
+    color: #fff;
+  }
+
+  &_submit {
+    margin-top: .7rem;
+    pointer-events: all;
+    width: 100%;
+    border-radius: 0.8rem;
+    font-size: .95rem;
+    padding: clmp(1rem, 1.3rem) 2rem;
+
+    &:hover {
+      background-color: var(--bg-accent-color-hover);
+    }
+  }
+
+  &_close {
+    height: 100%;
+    font-weight: 600;
+    transition: transform .3s ease-in-out;
+    font-size: clmp(.8rem, 1rem);
+    color: #fff;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transition: transform .2s ease-in-out;
+      transform: rotate(180deg) scale(.9);
+    }
+  }
+}
+
+// #################################################
+.input-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.input-error-label {
+  animation: fadeInRight .4s ease-out forwards;
+  color: var(--error-color);
+  float: right;
+  font-size: clmp(.8rem, .9rem);
+}
+
+.input {
+  width: 100%;
+  background-color: var(--bg-gray-color);
+  color: var(--ff-color);
+  height: clmp(3.5rem, 4rem);
+  border: none;
+  outline: 1px solid var(--outline-color);
+  border-radius: 0.8rem;
+  padding: 0 1rem;
+  font-size: clmp(.9rem, 1rem);
+  font-family: $ff-base;
+  font-weight: 500;
+  transition: all $defl-transit;
+  cursor: default;
+
+  &_edit {
+    outline-color: var(--bg-accent-color);
+    box-shadow: inset 0 0 0 1.5px var(--bg-accent-color);
+    font-weight: 300;
+    cursor: text;
+  }
+
+  &_error {
+    outline-color: var(--error-color);
+    box-shadow: inset 0 0 0 1.5px var(--error-color);
+  }
+
+  &_find {
+    max-height: clmp(2.5rem, 3rem);
+    font-size: clmp(.7rem, .9rem);
+
+    &:focus {
+      outline-color: var(--bg-accent-color);
+      box-shadow: inset 0 0 0 1.5px var(--bg-accent-color);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      .image {
+        transform: scale(1.2) rotate(45deg);
+      }
+    }
+
+    .image {
+      $input_icon_size: clamp(40%, 4vw, 55%);
+      height: $input_icon_size;
+      width: $input_icon_size;
+      transition: transform .3s ease;
+
+      path {
+        transition: stroke $defl-transit;
+        stroke: var(--ff-color)
+      }
+    }
+
+    &_edit {
+      .image  {
+        transform: rotate(45deg);
+        path {
+          stroke: var(--bg-accent-color);
+        }
+      }
+    }
+  }
+}
+
+// #################################################
+.image {
+  height: 100%;
+  width: 100%;
+}
+
+// #################################################
+.manager-toast {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  padding: 1rem 0rem;
+  text-align: center;
+}
+// #################################################
+
+// #################################################
+
+.point-hint {
+  $size: 0.2rem;
+  min-height: $size;
+  height: $size;
+  min-width: $size;
+  width: $size;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  padding: clmp(0.4rem, 0.5rem);
+  outline: 1px solid var(--outline-color);
+  background-color: var(--bg-l-color);
+  color: var(--p-light-color);
+  font-size: clmp(.6rem, .8rem);
+  cursor: pointer;
+  transition: all .2s ;
+
+  &:hover {
+    background-color: var(--outline-color);
+  }
+}
+
+// #################################################
+// TOGGLE BUTTON
+$switch-width: clmp(2.5rem, 3.125rem); // от ~40px до ~50px
+$switch-height: clmp(1.25rem, 1.5rem); // от ~20px до ~24px
+$handle-size: clmp(1rem, 1.24rem);     // от ~16px до ~20px
+$transition-time: 0.4s;
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: $switch-width;
+  height: $switch-height;
+  cursor: pointer;
+
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .toggle-switch__slider {
+      background-color: var(--bg-accent-color);
+
+      .toggle-switch__handle {
+        transform: translateX(
+          calc($switch-width - $handle-size - 2px - 0.125rem) // 2px = 0.125rem
+        );
+        background-color: #fff;
+        
+      }
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    outline: 1px solid var(--outline-color);
+    border-radius: $switch-height;
+    background-color: transparent;
+    transition: background-color $transition-time ease;
+  }
+
+  &__handle {
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    width: $handle-size;
+    height: $handle-size;
+    background-color: var(--bg-accent-color);
+    border-radius: 50%;
+    transition: transform $transition-time ease;
+    z-index: 1;
+  }
+}

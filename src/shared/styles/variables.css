@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap");
+:root {
+  --bg-color: #0C0C0C;
+  --bg-cont-color: #121212;
+  --bg-m-color: #101010;
+  --bg-l-color: #121212;
+  --bg-l-color-hover: #252525;
+  --bg-gray-color: #1b1b1b;
+  --bg-accent-color: #5D00FF;
+  --bg-accent-color-hover: #5d00ffbe;
+  --bg-input-color: #171717;
+  --bg-input-color-hover: #1a1a1a;
+  --icon-input-color: brightness(0) saturate(100%) invert(19%) sepia(10%) saturate(7%) hue-rotate(353deg) brightness(102%) contrast(88%);
+  --bg-header: #0c0c0ccb;
+  --bg-accent-color-opacity: #5d00ffc5;
+  --bg-btn-hover: rgba(56, 56, 56, 0.5);
+  --bg-accent-btn-hover: #5d00ffd3;
+  --ff-color: #fff;
+  --ff-color-accent: #5D00FF;
+  --ff-muted-color: rgba(255, 255, 255, .85);
+  --ff-silent-color: rgba(255, 255, 255, .5);
+  --border-color: rgba(55, 55, 55, 0.5);
+  --border-color-hover: rgba(77, 77, 77, 0.5);
+  --line-color: #37373780;
+  --outline-color: #ffffff18;
+  --p-light-color: #ffffff7c;
+  --error-color: #e74c3c;
+}
+
+[data-theme=light] {
+  --bg-color: #FAF9F9;
+  --bg-cont-color: #F6F6F6;
+  --bg-m-color: #fff;
+  --bg-l-color: #F0F0F0;
+  --bg-l-color-hover: #e9ddfd;
+  --bg-gray-color: #e7e7e7;
+  --bg-input-color: #171717;
+  --bg-accent-color: #8945FF;
+  --bg-btn-hover: #e9ddfd;
+  --bg-accent-btn-hover: rgba(123, 48, 253, 0.827);
+  --bg-header: #faf9f9ce;
+  --bg-accent-color-opacity: #8945ffb9;
+  --icon-input-color: brightness(0) saturate(100%) invert(95%) sepia(0%) saturate(52%) hue-rotate(166deg) brightness(94%) contrast(84%);
+  --ff-color: #0C0C0C;
+  --ff-color-accent: #8945FF;
+  --ff-muted-color: #373737;
+  --ff-silent-color: rgba(0, 0, 0, .5);
+  --border-color: none;
+  --border-color-hover: none;
+  --line-color: #B3B3B340;
+  --outline-color: #30303018;
+  --p-light-color: #0C0C0C;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInBottom {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInZoom {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=variables.css.map */

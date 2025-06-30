@@ -1,0 +1,635 @@
+@use '@/shared/styles/variables.scss' as *;
+@use '@/shared/styles/elements.scss' as *;
+@use '@/pages/profile-page/ui/ProfilePage.scss' as *;
+@use '@/pages/exchanger-page/ui/ExchangerPage.scss' as *;
+@use '@/pages/transaction-pages/TransactionsPages.scss' as *;
+@use '@/features/PaymentModal/PaymentModal.scss' as *;
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: $ff-base;
+    transition: background-color .4s ease-in-out;
+    overflow-x: hidden;
+}
+
+// ===============================================
+// Настройка скролл бара
+::selection {
+    background-color: var(--ff-color);
+    color: var(--bg-color);
+}
+  
+::-moz-selection {
+    background-color: var(--ff-color);
+    color: var(--bg-color);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+  
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #7700ff6b;
+   
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ff-color-accent);
+}
+
+// ===============================================
+// Контейнер сайта
+main {
+    position: relative;
+    @include padding-container(1rem);
+    display: flex;
+    flex-direction: column;
+    gap: $block_split_distance;
+    overflow: hidden;
+}
+
+// ===============================================
+// Шрифты
+h2, h3, h4 {
+    cursor: default;
+    color: var(--ff-color);
+    margin: 0;
+}
+
+h1 {
+    color: var(--ff-color);
+    margin: 0;
+    font-size: clamp(2.8rem, 3.8vw, 4.4rem);
+    transition: all $defl-transit;
+}
+
+h2 {
+    font-size: clamp(1.1rem, 2.1vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    transition: all .4s ease-in-out;
+}
+
+h3 {
+    font-size: clamp(.9rem, 1.3vw, 1.52rem);
+    font-weight: 400;
+    line-height: 1.3;
+    transition: all .4s ease-in-out;
+}
+
+h4 {
+    font-size: clamp(.8rem, 1vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.3;
+    transition: all .4s ease-in-out;
+}
+
+// ===============================================
+// Кнопки
+button {
+    min-width: fit-content;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ff-color);
+    font-family: $ff-base;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+// ===============================================
+// Векторная графика
+.first_vector_cont {
+    top: -1rem;
+    width: 100%;
+    height: 150vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+    z-index: -5;
+    @media (max-width: 1000px) {
+        top: -2rem;
+    }
+}
+#firstVector {
+    height: 53rem;
+    width: 75%;
+    transition: width .7s ease-in-out, margin .7s ease-in-out, height .7s ease-in-out;
+    @media (max-width: 1400px) { width: 80%; }
+    @media (max-width: 1300px) { width: 85%; }
+    @media (max-width: 1200px) { width: 90%; }
+    @media (max-width: 1000px) {
+        height: 40rem;
+        width: 100%;
+        margin-left: 1.3rem;
+    }
+}
+
+#particle_start {
+    position: absolute;
+    z-index: -1;
+    height: 150%;
+    width: 100%;
+    bottom: 0;
+}
+
+.particle_stars_top {
+    @include padding-container(0rem);
+    position: absolute;
+    top: -0rem;
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    z-index: -1;
+    @media (max-width: 1000px) {
+        top: -10rem;
+    }
+
+    img {
+        height: 100%;
+        width: 50%;
+        @media (max-width: 1000px) {
+            height: 150%;
+            width: 110%;
+        }
+    }
+}
+
+[data-theme="light"] { #firstVector { opacity: .8; } }
+  
+[data-theme="dark"] { #firstVector { opacity: 1; } }
+
+// ===============================================
+// Анимации
+.language-change-animation {
+    animation: swing-animation .5s ease-in-out;
+  }
+  
+@keyframes swing-animation {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+// ===============================================
+// Скролл эффект Header
+.scrolled {
+    background: linear-gradient(270deg, var(--bg-header), var(--bg-accent-color-opacity), var(--bg-header));
+    animation: gradientMove 15s ease-in-out infinite;
+    background-size: 400% 400%;
+    backdrop-filter: blur(5px);
+    transform: scaleX(1)  translateY(-60px);
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+
+    div {
+        opacity: 0;
+        border-radius: 100%;
+    }
+
+    @media (max-width: 1500px) { transform: scaleX(1)  translateY(-50px); }
+    @media (max-width: 1300px) { transform: scaleX(1)  translateY(-40px); }
+    @media (max-width: 1100px) { transform: scaleX(1)  translateY(-30px); }
+    @media (max-width: 1100px) { transform: scaleX(1) scaleY(1.2)  translateY(-34px); }
+    @media (max-width: 800px) { transform: scaleX(1) scaleY(1.2)  translateY(-30px); }
+    @media (max-width: 800px) { transform: scaleX(1) scaleY(1.2)  translateY(-27px); }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+// Header DropDown ============================================================
+header.open {
+    #headerContainer {
+        background-color: var(--bg-color)
+    }
+}
+
+// Линия разделения секций =====================================================
+.sl {
+    width: 100%;
+    border-bottom: 1px solid var(--line-color);
+    transform: scaleX(200%);
+    overflow: hidden
+}
+
+// Заголовки секций ============================================================
+.block_title {
+    @include flex-row;
+    width: 100%;
+    opacity: 0;
+
+    .block_title_cont {
+        margin-bottom: $block_split_distance;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        @media (max-width: $features_adaptive_point) {
+            justify-content: center;
+        }
+
+        
+        h2 {
+            @include flex-row;
+            text-wrap: nowrap;
+            justify-content: flex-start;
+            gap: clamp(0.5rem, 0.2rem + 1.3vw, 1.7rem);
+            width: 45%;
+            max-height: 6rem;
+            @media (max-width: $features_adaptive_point) {
+                width: 100%;
+            }
+
+            svg:first-child {
+                height: clamp(0.5rem, 0.4rem + 2vw, 2rem);
+                margin-right: clamp(0.5rem, 0.2rem + 1.3vw, 1.7rem);
+                g {
+                    transition: $defl-transit
+                }
+            }
+
+            span {
+                @include flex-row;
+                justify-content: flex-start;
+                margin-right: 1rem;
+                g {
+                    transition: $defl-transit
+                }
+            }
+
+            .arrow_container {
+                padding-top: clamp(5px, 0.8vw + 0.1vh, 10px);
+                width: 50%;
+                flex: 1;
+                // @media (max-width: $features_adaptive_point) {
+                //     display: none;
+                // }
+            }
+        }
+    }
+}
+
+.visible {
+    opacity: 1;
+    &_zoom {
+        animation: fadeInZoom 1s ease-out forwards;
+        opacity: 1;
+    }
+
+    &_top {
+        animation: fadeIn 1s ease-out forwards;
+        opacity: 1;
+    }
+
+    &_left {
+        animation: fadeInLeft 1s ease-out forwards;
+        opacity: 1;
+    }
+
+    &_right {
+        animation: fadeInRight 1s ease-out forwards;
+        opacity: 1;
+    }
+
+    &_bottom {
+        animation: fadeInBottom 1s ease-out forwards;
+        opacity: 1;
+    }
+}
+
+.loading-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-top: 2px solid var(--bg-accent-color); /* цвет спиннера */
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+
+.support {
+    $scroll_top_btn_size: clmp(2.3rem, 3.2rem);
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: $scroll_top_btn_size;
+    transition: .3s ease-in-out;
+    box-sizing: border-box;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        height: max-content;
+        width: max-content;
+        bottom: calc($scroll_top_btn_size + 1rem);
+        opacity: 0;
+        transition: .3s ease;
+        gap: 1rem;
+        right: 5%;
+        transition: opacity .3s ease-in-out, transform .4s;
+        transform: translateX(10rem);
+
+        &_show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    a {
+        width: 10rem;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    &__redir {
+        width: 100%;
+        height: clmp(2rem, 3rem);
+        background-color: var(--bg-accent-color-hover);
+        border-radius: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 0 1rem;
+        transition: .3s ease-in-out;
+        opacity: 1;
+        text-decoration: none;
+        color: #fff;
+        outline: 1px solid var(--outline-color);
+        
+
+        &__icon {
+            height: 50%;
+            transition: .3s ease-in-out;
+        }
+
+        &:hover {
+            box-shadow: 0 0 10px var(--bg-accent-color);
+
+            .support__redir__icon {
+                transform: scale(1.2);
+            }
+        }
+
+        &:active {
+            transition: .1s;
+            opacity: .8;
+        }
+    }
+    
+    &__button {
+        width: $scroll_top_btn_size;
+        max-width: $scroll_top_btn_size;
+        height: $scroll_top_btn_size;
+        max-height: $scroll_top_btn_size;
+        background-color: var(--bg-accent-color-hover);
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s ease-in-out;
+        padding-top: 0.3rem;
+        cursor: default;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(.9);
+        }
+
+        &:active {
+            transform: scale(.8);
+        }
+        
+        img {
+            height: 60%;
+        }
+    }
+}
+
+.hint-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  
+    // .point-hint {
+    //   background-color: #007bff;
+    //   color: white;
+    //   border-radius: 50%;
+    //   width: 24px;
+    //   height: 24px;
+    //   font-weight: bold;
+    //   font-size: 14px;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    //   cursor: pointer;
+    //   transition: background-color 0.2s ease;
+  
+    //   &:hover {
+    //     background-color: #0056b3;
+    //   }
+    // }
+  
+    .hint-content {
+      z-index: 1100;
+      position: absolute;
+      background-color: #ffffff91;
+      color: var(--ff-color);
+      padding: 1rem 1rem;
+      border-radius: 6px;
+      font-size: 14px;
+      z-index: 1000;
+      max-width: 400px;
+      width: 10rem;
+      word-wrap: break-word;
+      white-space: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      outline: 1px solid var(--outline-color);
+      line-height: 1rem;
+      backdrop-filter: blur(5px);
+      animation: fadeInHint 0.2s ease-in-out;
+  
+      .hint-title {
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      .hint-text {
+        white-space: pre-line;
+      }
+    }
+  
+    // Треугольник
+    .hint-content::after {
+      content: '';
+      position: absolute;
+      border: 6px solid transparent;
+    }
+  }
+
+[data-theme="light"] { .hint-content { background-color: #ffffff91 } }
+  
+[data-theme="dark"] { .hint-content { background-color: #202020c2 }  }
+  
+  /* Направления */
+  .hint-direction--top .hint-content {
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hint-direction--top .hint-content::after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: var(--outline-color);
+    border-bottom-color: transparent;
+  }
+  
+  .hint-direction--bottom .hint-content {
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hint-direction--bottom .hint-content::after {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: #333;
+    border-top-color: transparent;
+  }
+  
+  .hint-direction--left .hint-content {
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .hint-direction--left .hint-content::after {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: #333;
+    border-right-color: transparent;
+  }
+  
+  .hint-direction--right .hint-content {
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .hint-direction--right .hint-content::after {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: #333;
+    border-left-color: transparent;
+  }
+
+  @keyframes fadeInHint {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -5px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+}
+
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out;
+    opacity: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .splash-screen.fade-out {
+    opacity: 0;
+  }
+   
+  .spinner {
+    $logo_size: 9rem;
+    width: $logo_size;
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
+    align-items: center;
+  
+    img {
+      height: 8rem;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      overflow: hidden;
+  
+      // Анимация вращения для второго изображения
+      &:nth-child(2) {
+        animation: spin 3s linear infinite; // 3 секунды на оборот, можно менять
+        margin-right: 0.1rem;
+      }
+  
+      &:not(:nth-child(2)) {
+        filter: brightness(0) saturate(100%) invert(12%) sepia(6%) saturate(97%) hue-rotate(314deg) brightness(95%) contrast(89%);
+      }
+    }
+  }
+  
+  // Ключевые кадры для анимации вращения
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

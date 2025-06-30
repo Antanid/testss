@@ -1,0 +1,348 @@
+@use '@/shared/styles/variables.scss' as *;
+
+@keyframes modalOverlayFadeIn {
+  from {
+    backdrop-filter: blur(0px);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes modalContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.payment-modal__overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modalOverlayFadeIn .4s forwards;
+}
+
+.payment-modal__content {
+  padding: 5rem 0;
+  width: clmp(22rem, 28rem);
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.payment-modal__container {
+  width: clmp(22rem, 28rem);
+  background-color: var(--bg-l-color);
+  border-radius: 1rem;
+  z-index: 101;
+  outline: 1px solid #ffffff23;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: modalContentFadeIn $defl-transit forwards;
+  animation-delay: 0.1s;
+  padding: 2rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.payment-modal__main {
+  display: flex;
+  flex-direction: column;
+  gap: clmp(1.8rem, 3rem);
+  box-sizing: border-box;
+
+  .text_h3 {
+    display: inline-block;
+    width: 30%;
+
+    @media (max-width: $bp_mobile) {
+      width: 100%;
+    }
+  }
+}
+
+.payment-modal__details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  gap: clmp(1.7rem, 2rem);
+
+  .button_submit {
+    padding: 0rem 2rem;
+    height: clmp(2.9rem, 3.5rem);
+    margin-top: 0;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: clmp(1rem, 1.3rem);
+    box-sizing: border-box;
+
+    .input {
+      height: clmp(2.9rem, 3.5rem);
+    }
+
+    &__input-container {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+
+      .input:first-child {
+        box-sizing: border-box;
+        cursor: text;
+
+        &_edit {
+          font-weight: 500;
+        }
+      }
+
+      .input:last-child {
+        box-sizing: border-box;
+      }
+
+      &:hover {
+        .icon__svg {
+          transform: scaleY(1.2) scaleX(1) rotate(180deg);
+
+          &_active {
+            transform: scaleY(1.2) scaleX(1) rotate(90deg);
+          }
+        }
+        
+        .icon__svg path {
+          stroke: var(--bg-accent-color);
+        }
+      }
+    }
+  }
+
+  .icon {
+    &__container {
+      $size: 2rem;
+      position: absolute;
+      height: $size;
+      width: $size;
+      height: 100%;
+      right: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+    }
+
+    &__svg {
+      height: 30%;
+      transition: transform .4s;
+
+      path {
+        transition: all .2s;
+        stroke: var(--ff-color);
+      }
+
+      &_active {
+        transform: scaleY(1.2) scaleX(1) rotate(90deg);
+        path {
+          stroke: var(--bg-accent-color);
+        }
+      }
+    }
+  }
+}
+
+.select-container {
+  .input {
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+}
+
+
+.payment-modal__method {
+  position: absolute;
+  top: clmp(4rem, 5rem);
+  box-sizing: border-box;
+  animation: fadeIn .2s ease-out forwards;
+  opacity: 1;
+  display: none;
+  width: 102%;
+  left: -1%;
+  padding: 0;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 1rem;
+  box-sizing: border-box;
+
+  &_show {
+    display: flex;
+  }
+}
+
+.select-method {
+  &__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-accent-color);
+    width: 100%;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    color: #fff;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: clmp(0.5rem, 1rem);
+  }
+
+  &__input-container {
+    animation: fadeIn .4s ease-out forwards;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 1rem;
+
+    &:hover {
+      .icon path {
+        stroke: var(--bg-accent-color);
+      }
+    }
+  }
+
+  &__icon-container {
+    position: absolute;
+    color: aliceblue;
+    right: 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  &__icon {
+    $size: 60%;
+    width: $size;
+    height: $size;
+
+    path {
+      transition: $defl-transit;
+      stroke: var(--ff-color);
+    }
+  }
+
+  $item_size: clmp(3.5rem, 4.5rem);
+  &__items {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(3 * $item_size);
+    overflow-y: auto;
+    gap: 1px;
+  }
+
+  &__items-wrapper {
+    animation: fadeIn .4s ease-out forwards;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: var(--outline-color);
+  }
+
+  &__item {
+    animation: fadeIn .4s ease-out forwards;
+    box-sizing: border-box;
+    width: 100%;
+    height: $item_size;
+    min-height: $item_size;
+    padding: 0 1rem;
+    transition: .2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    background-color: var(--bg-l-color);
+
+    .text_h4 {
+      pointer-events: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+
+      .select-point {
+        $size: clmp(1.2rem, 1.5rem);
+        min-height: $size;
+        min-width: $size;
+        background-color: var(--bg-accent-color);
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.3rem;
+        box-sizing: border-box;
+        opacity: 0;
+        transform: scale(.6);
+        transition: transform .2s ease-in-out;
+
+        .icon {
+          path {
+            stroke: #fff;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      background-color: var(--bg-gray-color);
+    }
+  }
+}
+
+.select-method__item:hover:not(.select-method__item_select) .text_h4 .select-point {
+  opacity: 0.3;
+  outline: 2px solid var(--bg-accent-color);
+  background: none;
+  transform: scale(.98);
+
+  svg path {
+    stroke: var(--bg-accent-color);
+  }
+}
+
+.select-method__item_select .text_h4 .select-point {
+  opacity: 1;
+  transform: scale(1);
+}
