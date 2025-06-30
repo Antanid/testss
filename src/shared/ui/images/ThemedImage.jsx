@@ -1,4 +1,4 @@
-import { useTheme } from '@/shared/theme';
+import { useTheme } from '@/shared/theme'
 
 export const ThemedImage = ({
   src,
@@ -12,29 +12,22 @@ export const ThemedImage = ({
   filterLight,
   disableThemeSwitch = false,
 }) => {
-  const { theme } = useTheme();
+  const { theme } = useTheme()
 
-  const imageSrc = disableThemeSwitch
-    ? src
-    : theme === 'dark'
-      ? srcDark || src
-      : srcLight || src;
+  const imageSrc = disableThemeSwitch ? src : theme === 'dark' ? srcDark || src : srcLight || src
 
-  let appliedFilter;
+  let appliedFilter
 
   if (disableThemeSwitch) {
-    appliedFilter = filter || 'none';
+    appliedFilter = filter || 'none'
   } else if (filter) {
-    appliedFilter = filter;
+    appliedFilter = filter
   } else if (theme === 'dark' && filterDark) {
-    appliedFilter = filterDark;
+    appliedFilter = filterDark
   } else if (theme === 'light' && filterLight) {
-    appliedFilter = filterLight;
+    appliedFilter = filterLight
   } else {
-    appliedFilter =
-      theme === 'dark'
-        ? 'brightness(100%)'
-        : 'invert(1) brightness(0.8) contrast(2)';
+    appliedFilter = theme === 'dark' ? 'brightness(100%)' : 'invert(1) brightness(0.8) contrast(2)'
   }
 
   return (
@@ -47,5 +40,5 @@ export const ThemedImage = ({
         filter: appliedFilter,
       }}
     />
-  );
-};
+  )
+}

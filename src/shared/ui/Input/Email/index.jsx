@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import styles from './EmailInput.module.scss';
-import { useLanguage } from '@/shared/lang';
+import React, { useState, useEffect } from 'react'
+import styles from './EmailInput.module.scss'
+import { useLanguage } from '@/shared/lang'
 
 const EmailInput = ({
-  name = "email",
-  id = "inputEmail",
+  name = 'email',
+  id = 'inputEmail',
   required = true,
   value: propValue,
   onChange: propOnChange,
@@ -12,51 +12,51 @@ const EmailInput = ({
   isTouched,
   ...props
 }) => {
-  const { language } = useLanguage();
-  const [error, setError] = useState('');
+  const { language } = useLanguage()
+  const [error, setError] = useState('')
 
-  const isControlled = propValue !== undefined;
-  const [internalValue, setInternalValue] = useState(propValue || '');
-  const value = isControlled ? propValue : internalValue;
+  const isControlled = propValue !== undefined
+  const [internalValue, setInternalValue] = useState(propValue || '')
+  const value = isControlled ? propValue : internalValue
 
-  const placeholder = language === 'en' ? 'Enter email' : 'Введите почту';
-  const invalidMessage = language === 'en' ? 'example@email.com' : 'example@email.com 👈';
+  const placeholder = language === 'en' ? 'Enter email' : 'Введите почту'
+  const invalidMessage = language === 'en' ? 'example@email.com' : 'example@email.com 👈'
 
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
+  const validateEmail = email => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return re.test(String(email).toLowerCase())
+  }
 
-  const handleChange = (e) => {
-    const newValue = e.target.value;
+  const handleChange = e => {
+    const newValue = e.target.value
 
     if (!isControlled) {
-      setInternalValue(newValue);
+      setInternalValue(newValue)
     }
 
     if (propOnChange) {
-      propOnChange(e);
+      propOnChange(e)
     }
 
-    let errorMessage = '';
+    let errorMessage = ''
     if (required && !newValue) {
-      errorMessage = language === 'en' ? 'Email is required' : 'Почта обязательна 👈';
+      errorMessage = language === 'en' ? 'Email is required' : 'Почта обязательна 👈'
     } else if (newValue && !validateEmail(newValue)) {
-      errorMessage = invalidMessage;
+      errorMessage = invalidMessage
     }
 
-    setError(errorMessage);
+    setError(errorMessage)
 
     if (onValidate) {
-      onValidate({ value: newValue, error: errorMessage });
+      onValidate({ value: newValue, error: errorMessage })
     }
-  };
+  }
 
   useEffect(() => {
     if (isTouched) {
-      handleChange({ target: { value } });
+      handleChange({ target: { value } })
     }
-  }, [isTouched]);
+  }, [isTouched])
 
   return (
     <div className={styles.EmailInput_container}>
@@ -72,14 +72,10 @@ const EmailInput = ({
         required={required}
         {...props}
       />
-      <img
-        src="login/email.svg"
-        alt=""
-        className={styles.EmailInput_icon}
-      />
+      <img src="login/email.svg" alt="" className={styles.EmailInput_icon} />
       {error && <div className={styles.EmailInput_errorMessage}>{error}</div>}
     </div>
-  );
-};
+  )
+}
 
-export default EmailInput;
+export default EmailInput

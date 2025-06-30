@@ -35,14 +35,14 @@
 
 .exchanger__chapter {
   flex: 1;
-  padding: clmp(.9rem, 1.2rem) clmp(.5rem, 1rem);
+  padding: clmp(0.9rem, 1.2rem) clmp(0.5rem, 1rem);
   border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
   animation: fadeInLeft 1s ease-out forwards;
 
   &:last-child {
@@ -50,7 +50,7 @@
   }
   &_active {
     pointer-events: none;
-    
+
     .text {
       color: #fff;
     }
@@ -58,24 +58,24 @@
 }
 
 .exchanger__chapter-background {
-    width: 50%;
-    height: 100%;
-    border-radius: 1rem;
-    background-color: var(--bg-accent-color);
-    z-index: 0;
-    position: absolute;
-    transition: all .4s ease-in-out;
-    
-    &__left {
-      transition: all .4s ease-in-out;
-      left: 0;
-    }
-    
-    &__right {
-      transition: all .4s ease-in-out;
-      left: 50%;
-    }
+  width: 50%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: var(--bg-accent-color);
+  z-index: 0;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+
+  &__left {
+    transition: all 0.4s ease-in-out;
+    left: 0;
   }
+
+  &__right {
+    transition: all 0.4s ease-in-out;
+    left: 50%;
+  }
+}
 
 .exchanger__content {
   padding: clmp(1.2rem, 1.5rem) clmp(1rem, 2rem);
@@ -102,15 +102,15 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: clmp(.8rem, 1.3rem);
+  gap: clmp(0.8rem, 1.3rem);
 }
 
 .exchanger__stages-visual {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: clmp(.4rem, .8rem);
-  gap: clmp(.8rem, 1rem);
+  height: clmp(0.4rem, 0.8rem);
+  gap: clmp(0.8rem, 1rem);
 
   &__stage {
     background-color: var(--ff-color);
@@ -124,7 +124,7 @@
   }
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   .exchanger__stages-visual__stage {
     background-color: var(--bg-l-color);
 
@@ -172,25 +172,26 @@
   }
 
   .text_error {
-    animation: fadeInRight .5s ease-out forwards;
+    animation: fadeInRight 0.5s ease-out forwards;
     color: var(--error-color);
   }
 
-  .text_commission, .text_chain, .text_convert {
+  .text_commission,
+  .text_chain,
+  .text_convert {
     color: var(--ff-silent-color);
     font-weight: 600;
   }
 }
 
 .exchanger__coin {
-
   &__select-container {
     height: 100%;
     width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: clmp(.8rem, 1.5rem);
+    gap: clmp(0.8rem, 1.5rem);
   }
 
   &__icon-container {
@@ -219,7 +220,6 @@
     justify-content: center;
     gap: clmp(0.2rem, 0.5rem);
 
-
     .text_select-coin {
       display: flex;
       flex-direction: row;
@@ -235,17 +235,17 @@
       }
 
       .icon__svg {
-        $size: clmp(.7rem, .9rem);
+        $size: clmp(0.7rem, 0.9rem);
         height: $size;
         width: $size;
         transform: rotate(180deg);
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         @media (max-width: $bp_mobile) {
           transform: rotate(180deg) scaleY(1.2);
         }
 
         path {
-          transition: all .4s ease-in-out;
+          transition: all 0.4s ease-in-out;
           stroke: var(--ff-color);
         }
       }
@@ -266,7 +266,7 @@
 }
 
 .exchanger__swap {
-  animation: fadeInZoomSwap .5s ease-out forwards;
+  animation: fadeInZoomSwap 0.5s ease-out forwards;
   $size: clmp(2.7rem, 4rem);
   position: absolute;
   height: $size;
@@ -284,7 +284,7 @@
 
   &:hover {
     svg {
-      transition: transform .2s;
+      transition: transform 0.2s;
       transform: scaleY(-1);
     }
   }
@@ -299,7 +299,7 @@
 
   svg {
     height: 50%;
-    transition: .3s ease;
+    transition: 0.3s ease;
     path {
       transition: $defl-transit;
       stroke: #fff;
@@ -310,7 +310,7 @@
 .exchanger__fixed-rate {
   display: flex;
   flex-direction: row;
-  gap: clmp(.8rem, 1rem);
+  gap: clmp(0.8rem, 1rem);
 
   .text {
     color: var(--ff-muted-color);
@@ -325,7 +325,7 @@
 
   @keyframes blur-in {
     0% {
-      opacity: .3s;
+      opacity: 0.3s;
       filter: blur(5px);
     }
     100% {
@@ -336,7 +336,7 @@
 
   @keyframes blur-in-two {
     0% {
-      opacity: .3;
+      opacity: 0.3;
       filter: blur(5px);
     }
     100% {
@@ -345,14 +345,13 @@
     }
   }
 
-  .text_toggle-rate_fix  {
-    animation: blur-in .6s ease-out forwards;
+  .text_toggle-rate_fix {
+    animation: blur-in 0.6s ease-out forwards;
   }
 
-  .text_toggle-rate_float  {
-    animation: blur-in-two .6s ease-out forwards;
+  .text_toggle-rate_float {
+    animation: blur-in-two 0.6s ease-out forwards;
   }
-  
 }
 
 .exchanger__next-stage {
@@ -360,7 +359,7 @@
   justify-content: center;
   width: 100%;
   gap: arem(2rem);
-  
+
   .button {
     border-radius: 0.8rem;
     height: clmp(2.8rem, 3.5rem);
@@ -391,7 +390,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clmp(.7rem, 1rem);
+  gap: clmp(0.7rem, 1rem);
   .exchanger__currency__row {
     pointer-events: none;
   }
@@ -416,18 +415,19 @@
   cursor: pointer;
 
   &:hover {
-    .text_details .icon  {
+    .text_details .icon {
       transform: rotate(180deg);
-      path{
+      path {
         stroke: var(--bg-accent-color);
       }
     }
   }
 
-  &_active, &_active:hover {
-    .text_details .icon  {
+  &_active,
+  &_active:hover {
+    .text_details .icon {
       transform: rotate(270deg);
-      path{
+      path {
         stroke: var(--bg-accent-color);
       }
     }
@@ -444,12 +444,12 @@
     width: clmp(0.35rem, 0.45rem);
     height: 100%;
     transform: rotate(90deg);
-    transition: .3s;
+    transition: 0.3s;
     path {
       transition: $defl-transit;
       stroke: var(--ff-color);
       stroke-linecap: round;
-      stroke-linejoin: round
+      stroke-linejoin: round;
     }
   }
 }
@@ -506,18 +506,18 @@
 
     &:active {
       .qr__icon {
-        transition: .1s;
-        transform: scale(.8);
+        transition: 0.1s;
+        transform: scale(0.8);
         path {
           stroke: var(--bg-accent-color);
-          stroke-opacity: .1;
+          stroke-opacity: 0.1;
         }
       }
     }
   }
 
   &__icon {
-    transition: .3s;
+    transition: 0.3s;
     path {
       transition: $defl-transit;
       stroke: var(--ff-color);
@@ -556,7 +556,7 @@
 }
 
 .exchanger__details__close {
-  $size: clmp(.8rem, 1.2rem);
+  $size: clmp(0.8rem, 1.2rem);
   height: $size;
   min-height: $size;
   width: $size;
@@ -571,12 +571,12 @@
 
   &:active {
     .icon {
-      transform: scale(.6);
+      transform: scale(0.6);
     }
   }
 
   .icon {
-    transition: .3s;
+    transition: 0.3s;
     width: 100%;
     height: 100%;
 
@@ -635,14 +635,14 @@
 }
 
 .mark-chain {
-  $size: clmp(.8rem, 1rem);
+  $size: clmp(0.8rem, 1rem);
   background-color: var(--bg-accent-color);
   border-radius: 1rem;
   height: $size;
   min-height: $size;
   width: calc($size * 1.5);
   padding: 0 0.5rem;
-  font-size: clmp(.5rem, .6rem);
+  font-size: clmp(0.5rem, 0.6rem);
   color: #fff;
   display: flex;
   align-items: center;
@@ -720,12 +720,11 @@
   transition: $defl-transit;
 }
 
-
 .valutes-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: arem(.8rem);
+  gap: arem(0.8rem);
 }
 
 .button__prev-stage {
@@ -735,13 +734,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .7rem;
+  padding: 0.7rem;
   gap: 0.8rem;
   .icon {
     height: 50%;
     path {
-      transition: .3s;
-      stroke: var(--ff-color)
+      transition: 0.3s;
+      stroke: var(--ff-color);
     }
   }
 }

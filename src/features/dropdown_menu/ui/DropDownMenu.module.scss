@@ -1,177 +1,217 @@
 @use '@/shared/styles/variables.scss' as *;
 
 .dropdownWrapper {
-    position: relative;
-    height: 0;
+  position: relative;
+  height: 0;
 }
 
 @mixin dropmenu_bg_stars {
-    img {
-        &:nth-child(1) {
-            position: absolute;
-            z-index: -1;
-            pointer-events: none;
-            height: 150%;
-            width: 150%;
-            bottom: 8rem;
-            left: 0;
-            transform: rotate(180deg);
-            @media (max-width: 1500px) { width: 65%; height: 65%; left: 21rem; bottom: 32rem; }
-            @media (max-width: 1300px) { width: 65%; height: 65%; left: 21rem; bottom: 31rem; }
-            @media (max-width: 1100px) { width: 80%; height: 80%; left: 19rem; bottom: 24rem; }
-            @media (max-width: 800px) { width: 110%; height: 110%; left: 5rem; bottom: 16rem; }
-            @media (max-width: 480px) { width: 150%; height: 150%; left: 0rem; bottom: 6rem;}
-            transition: width height opacity left bottom .4s ease-in-out;
-        } 
+  img {
+    &:nth-child(1) {
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+      height: 150%;
+      width: 150%;
+      bottom: 8rem;
+      left: 0;
+      transform: rotate(180deg);
+      @media (max-width: 1500px) {
+        width: 65%;
+        height: 65%;
+        left: 21rem;
+        bottom: 32rem;
+      }
+      @media (max-width: 1300px) {
+        width: 65%;
+        height: 65%;
+        left: 21rem;
+        bottom: 31rem;
+      }
+      @media (max-width: 1100px) {
+        width: 80%;
+        height: 80%;
+        left: 19rem;
+        bottom: 24rem;
+      }
+      @media (max-width: 800px) {
+        width: 110%;
+        height: 110%;
+        left: 5rem;
+        bottom: 16rem;
+      }
+      @media (max-width: 480px) {
+        width: 150%;
+        height: 150%;
+        left: 0rem;
+        bottom: 6rem;
+      }
+      transition: width height opacity left bottom 0.4s ease-in-out;
     }
+  }
 }
 
 @mixin dropdownmenu {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    transition: all .4s ease-in-out;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
 }
 
 .dropdownMenu {
-    @include dropmenu_bg_stars;
-    @include dropdownmenu;
-    min-height: 0rem;
-    height: 0vh;
+  @include dropmenu_bg_stars;
+  @include dropdownmenu;
+  min-height: 0rem;
+  height: 0vh;
+  opacity: 0;
+  ul {
     opacity: 0;
-    ul {
-        opacity: 0;
-        margin-top: 0;
-    }
+    margin-top: 0;
   }
-  
+}
+
 .dropdownMenuOpen {
-    @include dropmenu_bg_stars;
-    @include dropdownmenu;
-    transform: translateY(0);
-    position: fixed;
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--bg-color);
+  @include dropmenu_bg_stars;
+  @include dropdownmenu;
+  transform: translateY(0);
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  opacity: 1;
+  ul {
     opacity: 1;
-    ul {
-        opacity: 1;
-        margin-top: 2rem;
-    }
+    margin-top: 2rem;
+  }
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    height: 8%;
-    width: 30%;
-    transition: $defl-transit;
-    @media (max-width: 1000px) { width: 50%; }
-    @media (max-width: 800px) { width: 60%; }
-    @media (max-width: 700px) { width: 70%; }
-    @media (max-width: 600px) { width: 84%; }
-    
-    li {
-        &:nth-child(1), &:nth-child(2), &:nth-child(3){
-            span { transition: $defl-transit; margin-left: 0.5rem };
-            font-size: 0.95rem;
-            text-decoration: none;
-            text-wrap: nowrap;
-            color: var(--ff-color);
-            font-weight: 600;
-            transition: $defl-transit;
-            @include flex-row;
-            height: 90%;
-            display: flex;
-            justify-content: flex-start;
-            border-bottom: 1px solid var(--line-color);
-            cursor: pointer;
-            svg {
-                height: 1rem;
+  list-style: none;
+  padding: 0;
+  height: 8%;
+  width: 30%;
+  transition: $defl-transit;
+  @media (max-width: 1000px) {
+    width: 50%;
+  }
+  @media (max-width: 800px) {
+    width: 60%;
+  }
+  @media (max-width: 700px) {
+    width: 70%;
+  }
+  @media (max-width: 600px) {
+    width: 84%;
+  }
 
-                opacity: 0;
-                transition: $defl-transit;
-            }
-            
-            &:hover {
-                transform: translateX(10px);
-                svg {
-                    opacity: 1;
-                    transform-origin: center center;
-                    transform: rotate(180deg);
-                }
-            }
+  li {
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      span {
+        transition: $defl-transit;
+        margin-left: 0.5rem;
+      }
+      font-size: 0.95rem;
+      text-decoration: none;
+      text-wrap: nowrap;
+      color: var(--ff-color);
+      font-weight: 600;
+      transition: $defl-transit;
+      @include flex-row;
+      height: 90%;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 1px solid var(--line-color);
+      cursor: pointer;
+      svg {
+        height: 1rem;
+
+        opacity: 0;
+        transition: $defl-transit;
+      }
+
+      &:hover {
+        transform: translateX(10px);
+        svg {
+          opacity: 1;
+          transform-origin: center center;
+          transform: rotate(180deg);
         }
-
-        &:nth-child(4) {
-            @include flex-row;
-            display: flex;;
-            padding: 2rem 0;
-            div {
-                @include flex-row;
-                width: 80%;
-                min-width: 15rem;
-                flex-direction: column;
-                gap: 1.5rem;
-                div button {
-                    min-height: 3rem;
-                    height: 100%;
-                    width: 100%;
-
-                    @media (max-width: 1000px) {
-                        min-height: 2.7rem;
-                        font-size: .95rem;
-                    }
-                }
-                div:nth-child(2) button { @include default-btn; }
-                div:nth-child(3) button { @include accent-btn; }
-                div:nth-child(1) { 
-                    flex-direction: row;
-                    gap: 1rem;
-                    button:nth-child(1) {
-                        flex: 4;
-                        @include default-btn;
-                        @include flex-row;
-                    }
-                    .theme_icon {
-                        flex: 1;
-                        background-color: var(--bg-l-color);
-                        outline: 1px solid var(--border-color);
-                        border-radius: 0.8rem;
-                        height: 3rem;
-                        width: 100%;
-                        min-width: 3.5rem;
-                        position: relative;
-                        
-                        svg {
-                            position: absolute;
-                            height: 1.5rem;
-        
-                            transition: $defl-transit;
-                            cursor: pointer;
-                            fill: transparent; 
-                            stroke: var(--ff-color);
-
-                            &:hover {
-                                fill: var(--ff-color);
-                            }
-                        }
-
-                        @media (max-width: 1000px) {
-                            height: 2.7rem;
-                            font-size: .95rem;
-                            svg {
-                                height: 1.3rem;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+
+    &:nth-child(4) {
+      @include flex-row;
+      display: flex;
+      padding: 2rem 0;
+      div {
+        @include flex-row;
+        width: 80%;
+        min-width: 15rem;
+        flex-direction: column;
+        gap: 1.5rem;
+        div button {
+          min-height: 3rem;
+          height: 100%;
+          width: 100%;
+
+          @media (max-width: 1000px) {
+            min-height: 2.7rem;
+            font-size: 0.95rem;
+          }
+        }
+        div:nth-child(2) button {
+          @include default-btn;
+        }
+        div:nth-child(3) button {
+          @include accent-btn;
+        }
+        div:nth-child(1) {
+          flex-direction: row;
+          gap: 1rem;
+          button:nth-child(1) {
+            flex: 4;
+            @include default-btn;
+            @include flex-row;
+          }
+          .theme_icon {
+            flex: 1;
+            background-color: var(--bg-l-color);
+            outline: 1px solid var(--border-color);
+            border-radius: 0.8rem;
+            height: 3rem;
+            width: 100%;
+            min-width: 3.5rem;
+            position: relative;
+
+            svg {
+              position: absolute;
+              height: 1.5rem;
+
+              transition: $defl-transit;
+              cursor: pointer;
+              fill: transparent;
+              stroke: var(--ff-color);
+
+              &:hover {
+                fill: var(--ff-color);
+              }
+            }
+
+            @media (max-width: 1000px) {
+              height: 2.7rem;
+              font-size: 0.95rem;
+              svg {
+                height: 1.3rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @include change-theme-button-states;
-  
-  

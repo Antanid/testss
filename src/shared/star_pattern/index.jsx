@@ -1,80 +1,76 @@
-import React, { useRef, useEffect, useState } from 'react';
-import styles from './StarPattern.module.scss';
-import * as Icons from '@/shared/ui/icons';
+import React, { useRef, useEffect, useState } from 'react'
+import styles from './StarPattern.module.scss'
+import * as Icons from '@/shared/ui/icons'
 
 const StarPattern = () => {
-  const containerRef = useRef(null);
-  const [cells, setCells] = useState([]);
-  const [mousePos, setMousePos] = useState(null);
+  const containerRef = useRef(null)
+  const [cells, setCells] = useState([])
+  const [mousePos, setMousePos] = useState(null)
 
-  const gridSize = 40;
-  const maxRadius = 400;
+  const gridSize = 40
+  const maxRadius = 400
 
   useEffect(() => {
     const generateGrid = () => {
-      const container = containerRef.current;
-      if (!container) return;
+      const container = containerRef.current
+      if (!container) return
 
-      const rect = container.getBoundingClientRect();
-      const cols = Math.ceil(rect.width / gridSize);
-      const rows = Math.ceil(rect.height / gridSize);
+      const rect = container.getBoundingClientRect()
+      const cols = Math.ceil(rect.width / gridSize)
+      const rows = Math.ceil(rect.height / gridSize)
 
-      const newCells = [];
+      const newCells = []
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          newCells.push({ x, y });
+          newCells.push({ x, y })
         }
       }
-      setCells(newCells);
-    };
+      setCells(newCells)
+    }
 
-    generateGrid();
-    window.addEventListener('resize', generateGrid);
-    return () => window.removeEventListener('resize', generateGrid);
-  }, []);
+    generateGrid()
+    window.addEventListener('resize', generateGrid)
+    return () => window.removeEventListener('resize', generateGrid)
+  }, [])
 
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-        const container = containerRef.current;
-        if (!container) return;
-    
-        const rect = container.getBoundingClientRect();
-    
-        setMousePos({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-        });
-        };
-    
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+  useEffect(() => {
+    const handleMouseMove = e => {
+      const container = containerRef.current
+      if (!container) return
+
+      const rect = container.getBoundingClientRect()
+
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   const getBrightnessStyle = (cellX, cellY) => {
-    if (!mousePos) return { filter: 'brightness(0.4)', transition: 'filter 0.2s ease' };
+    if (!mousePos) return { filter: 'brightness(0.4)', transition: 'filter 0.2s ease' }
 
-    const dx = cellX * gridSize - mousePos.x;
-    const dy = cellY * gridSize - mousePos.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
+    const dx = cellX * gridSize - mousePos.x
+    const dy = cellY * gridSize - mousePos.y
+    const distance = Math.sqrt(dx * dx + dy * dy)
 
-    let brightness = 0.1;
+    let brightness = 0.1
     if (distance < maxRadius) {
-      const ratio = 1 - distance / maxRadius;
-      brightness = 0.1 + ratio;
+      const ratio = 1 - distance / maxRadius
+      brightness = 0.1 + ratio
     }
 
     return {
       filter: `brightness(${brightness})`,
       transition: 'filter 0.2s ease',
-    };
-  };
+    }
+  }
 
   return (
-    <div
-      className={styles.GridPattern}
-      ref={containerRef}
-      style={{ pointerEvents: 'auto' }}
-    >
+    <div className={styles.GridPattern} ref={containerRef} style={{ pointerEvents: 'auto' }}>
       {cells.map((cell, index) => (
         <div
           key={index}
@@ -90,7 +86,7 @@ const StarPattern = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default StarPattern;
+export default StarPattern

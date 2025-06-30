@@ -19,19 +19,19 @@ footer {
     position: absolute;
     top: -40%;
     z-index: -2;
-    @media(max-width: $features_adaptive_point) {
+    @media (max-width: $features_adaptive_point) {
       top: -30%;
     }
 
-    @media(max-width: 830px) {
+    @media (max-width: 830px) {
       top: -20%;
     }
 
-    @media(max-width: 570px) {
+    @media (max-width: 570px) {
       top: -15%;
     }
 
-    @media(max-width: 460px) {
+    @media (max-width: 460px) {
       top: -12%;
     }
 
@@ -72,7 +72,7 @@ footer {
     &_top {
       display: flex;
       justify-content: space-between;
-      @media(max-width: 1250px) {
+      @media (max-width: 1250px) {
         flex-direction: column;
         align-items: center;
         gap: 4rem;
@@ -80,10 +80,10 @@ footer {
 
       &_left {
         display: flex;
-        @media(min-width: $features_adaptive_point) {
+        @media (min-width: $features_adaptive_point) {
           gap: clmp(3.5rem, 5.5rem);
         }
-        @media(max-width: 1250px) {
+        @media (max-width: 1250px) {
           flex-direction: column;
           align-items: center;
           gap: 2rem;
@@ -101,16 +101,16 @@ footer {
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: auto auto;
         gap: clmp(3.5rem, 5.5rem);
-        @media(max-width: 1250px) {
+        @media (max-width: 1250px) {
           flex-direction: column;
           align-items: center;
         }
 
-        @media(max-width: 850px) {
+        @media (max-width: 850px) {
           grid-template-columns: repeat(2, 1fr);
         }
 
-        @media(max-width: 340px) {
+        @media (max-width: 340px) {
           grid-template-columns: repeat(1, 1fr);
         }
 
@@ -140,7 +140,7 @@ footer {
             gap: 1rem;
             font-weight: 300;
             letter-spacing: 0.05rem;
-            
+
             div {
               transition: $defl-transit;
               &:hover {
@@ -148,23 +148,22 @@ footer {
               }
             }
           }
-          
         }
       }
 
       &_right {
         display: flex;
         align-items: flex-start;
-        gap: clmp(.8rem, 1rem);
+        gap: clmp(0.8rem, 1rem);
       }
 
       &_messanger {
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: clmp(.9rem, 1.4rem);
+        min-height: clmp(0.9rem, 1.4rem);
         transition: transform $defl-transit;
-        
+
         &:hover {
           transform: scale(1.1);
         }
@@ -175,10 +174,10 @@ footer {
       display: flex;
       h4 {
         color: white;
-        font-size: clmp(.9rem, 1.1rem);
+        font-size: clmp(0.9rem, 1.1rem);
         font-weight: 300;
       }
-      @media(max-width: 1250px) {
+      @media (max-width: 1250px) {
         justify-content: center;
       }
     }

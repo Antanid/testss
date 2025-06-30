@@ -1,35 +1,34 @@
 export const ReferalTable = ({ language }) => {
-
   const referalTableColumns = [
     {
       title: {
         ru: 'Время регестрации',
-        en: 'Register date'
-      }
+        en: 'Register date',
+      },
     },
     {
       title: {
         ru: 'Почта',
-        en: 'Email'
-      }
+        en: 'Email',
+      },
     },
     {
       title: {
         ru: 'Статус',
-        en: 'Status'
-      }
+        en: 'Status',
+      },
     },
     {
       title: {
         ru: 'Заработано',
-        en: 'Earned'
-      }
+        en: 'Earned',
+      },
     },
     {
       title: {
         ru: 'ID',
-        en: 'ID'
-      }
+        en: 'ID',
+      },
     },
   ]
 
@@ -38,87 +37,84 @@ export const ReferalTable = ({ language }) => {
       date: '01.06.2025',
       email: 'liestck@gmail.com',
       status: 'Full Back',
-      earned: '15616'
+      earned: '15616',
     },
     {
       date: '01.06.2025',
       email: 'liestck@gmail.com',
       status: 'Full Back',
-      earned: '15616'
+      earned: '15616',
     },
     {
       date: '01.06.2025',
       email: 'liestck@gmail.com',
       status: 'Full Back',
-      earned: '15616'
+      earned: '15616',
     },
     {
       date: '01.06.2025',
       email: 'liestck@gmail.com',
       status: 'Full Back',
-      earned: '15616'
+      earned: '15616',
     },
     {
       date: '01.06.2025',
       email: 'liestck@gmail.com',
       status: 'Full Back',
-      earned: '15616'
+      earned: '15616',
     },
     {
       date: '01.06.2025',
       email: 'liestck@gmail.com',
       status: 'Full Back',
-      earned: '15616'
+      earned: '15616',
     },
   ]
 
   return (
-    <div className='container_default container__referals'>
-      <h4 className='text text_h4'>
-        {language === 'en' ?
-          'List of referrals' :
-          'Список рефералов'}
+    <div className="container_default container__referals">
+      <h4 className="text text_h4">
+        {language === 'en' ? 'List of referrals' : 'Список рефералов'}
       </h4>
-      <div className='referal__table'>
-        
-        <div className='container_default referal__table__row'>
+      <div className="referal__table">
+        <div className="container_default referal__table__row">
           {referalTableColumns.map((column, index) => {
             return (
-              <div className='referal__table__row__cell' key={index}>
-                <p className='text text_p text_p_light'>{column.title[language] || column.title.ru}</p>
+              <div className="referal__table__row__cell" key={index}>
+                <p className="text text_p text_p_light">
+                  {column.title[language] || column.title.ru}
+                </p>
               </div>
-            );
+            )
           })}
         </div>
 
-        
-          {referalTableData.map((referal, index) => {
-            return (
-              <div className='container_default referal__table__row' key={index}>
-                <div className='referal__table__row__cell'>
-                  <p className='text text_p'>{referal.date}</p>
-                </div>
-
-                <div className='referal__table__row__cell'>
-                  <p className='text text_p'>{referal.email}</p>
-                </div>
-
-                <div className='referal__table__row__cell'>
-                  <p className='text text_p'>{referal.status}</p>
-                </div>
-
-                <div className='referal__table__row__cell'>
-                  <p className='text text_p'>{referal.earned}$</p>
-                </div>
-
-                <div className='referal__table__row__cell'>
-                  <p className='text text_p'>{index}</p>
-                </div>
+        {referalTableData.map((referal, index) => {
+          return (
+            <div className="container_default referal__table__row" key={index}>
+              <div className="referal__table__row__cell">
+                <p className="text text_p">{referal.date}</p>
               </div>
-            );
-          })}
-        
+
+              <div className="referal__table__row__cell">
+                <p className="text text_p">{referal.email}</p>
+              </div>
+
+              <div className="referal__table__row__cell">
+                <p className="text text_p">{referal.status}</p>
+              </div>
+
+              <div className="referal__table__row__cell">
+                <p className="text text_p">{referal.earned}$</p>
+              </div>
+
+              <div className="referal__table__row__cell">
+                <p className="text text_p">{index}</p>
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
-  );
+  )
 }

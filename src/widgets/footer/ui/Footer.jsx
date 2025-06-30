@@ -1,113 +1,113 @@
-import { useLanguage } from '@/shared/lang';
-import * as Images from '@/shared/ui/images';
-import styles from './Footer.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '@/shared/lang'
+import * as Images from '@/shared/ui/images'
+import styles from './Footer.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 export const Footer = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { language } = useLanguage();
+  const { language } = useLanguage()
 
   const footerChapters = [
     {
-      "title": {
-        "ru": "Персонально",
-        "en": "Personal"
+      title: {
+        ru: 'Персонально',
+        en: 'Personal',
       },
-      "items": [
+      items: [
         {
-          "ru": "Обменник",
-          "en": "Exchange"
+          ru: 'Обменник',
+          en: 'Exchange',
         },
         {
-          "ru": "Купить",
-          "en": "Buy"
+          ru: 'Купить',
+          en: 'Buy',
         },
         {
-          "ru": "Продать",
-          "en": "Sell"
-        }
-      ]
+          ru: 'Продать',
+          en: 'Sell',
+        },
+      ],
     },
     {
-      "title": {
-        "ru": "Компания",
-        "en": "Company"
+      title: {
+        ru: 'Компания',
+        en: 'Company',
       },
-      "items": [
+      items: [
         {
-          "ru": "Обменник",
-          "en": "Exchange"
+          ru: 'Обменник',
+          en: 'Exchange',
         },
         {
-          "ru": "Купить",
-          "en": "Buy"
+          ru: 'Купить',
+          en: 'Buy',
         },
         {
-          "ru": "Продать",
-          "en": "Sell"
-        }
-      ]
+          ru: 'Продать',
+          en: 'Sell',
+        },
+      ],
     },
     {
-      "title": {
-        "ru": "Поддержка",
-        "en": "Support"
+      title: {
+        ru: 'Поддержка',
+        en: 'Support',
       },
-      "items": [
+      items: [
         {
-          "ru": "Обменник",
-          "en": "Exchange"
+          ru: 'Обменник',
+          en: 'Exchange',
         },
         {
-          "ru": "Купить",
-          "en": "Buy"
+          ru: 'Купить',
+          en: 'Buy',
         },
         {
-          "ru": "Продать",
-          "en": "Sell"
-        }
-      ]
+          ru: 'Продать',
+          en: 'Sell',
+        },
+      ],
     },
     {
-      "title": {
-        "ru": "Для партнеров",
-        "en": "For partners"
+      title: {
+        ru: 'Для партнеров',
+        en: 'For partners',
       },
-      "items": [
+      items: [
         {
-          "ru": "Обменник",
-          "en": "Exchange"
+          ru: 'Обменник',
+          en: 'Exchange',
         },
         {
-          "ru": "Купить",
-          "en": "Buy"
+          ru: 'Купить',
+          en: 'Buy',
         },
         {
-          "ru": "Продать",
-          "en": "Sell"
-        }
-      ]
+          ru: 'Продать',
+          en: 'Sell',
+        },
+      ],
     },
     {
-      "title": {
-        "ru": "Права",
-        "en": "Rules"
+      title: {
+        ru: 'Права',
+        en: 'Rules',
       },
-      "items": [
+      items: [
         {
-          "ru": "Обменник",
-          "en": "Exchange"
+          ru: 'Обменник',
+          en: 'Exchange',
         },
         {
-          "ru": "Купить",
-          "en": "Buy"
+          ru: 'Купить',
+          en: 'Buy',
         },
         {
-          "ru": "Продать",
-          "en": "Sell"
-        }
-      ]
+          ru: 'Продать',
+          en: 'Sell',
+        },
+      ],
     },
   ]
 
@@ -115,23 +115,23 @@ export const Footer = () => {
     {
       title: 'instagram',
       url: '#',
-      icon: '/contacts/instagram.svg'
+      icon: '/contacts/instagram.svg',
     },
     {
       title: 'discord',
       url: '#',
-      icon: '/contacts/discord.svg'
+      icon: '/contacts/discord.svg',
     },
     {
       title: 'telegram',
       url: 'https://t.me/woza_exchange_news',
-      icon: '/contacts/telegram.svg'
+      icon: '/contacts/telegram.svg',
     },
     {
       title: 'x',
       url: '#',
-      icon: '/contacts/x.svg'
-    }
+      icon: '/contacts/x.svg',
+    },
   ]
 
   return (
@@ -140,29 +140,34 @@ export const Footer = () => {
         <img src="/bg_woza.png" />
       </div>
       <div className={styles.footer_bg_pattern}>
-        <Images.BgStars/>
+        <Images.BgStars />
       </div>
 
       <div className={styles.footer_container}>
         <div className={styles.footer_container_top}>
-          
           <div className={styles.footer_container_top_left}>
             <div className={styles.footer_container_top_logo}>
               <img src="/logo_full.png" alt="WOZA" />
             </div>
-            
+
             <div className={styles.footer_container_top_chapters}>
               {footerChapters.map((item, index) => (
-                  <a className={styles.footer_container_top_chapters_item} key={index} onClick={() =>  { navigate('/exchange') }}>
-                    <h4>{item.title[language] || item.title.ru}</h4>
-                    <div>
-                      {item.items.map((subItem, subIndex) => (
-                        <div key={subIndex} className={styles.footer_container_top_chapters_subitem}>
-                          {subItem[language] || subItem.ru}
-                        </div>
-                      ))}
-                    </div>
-                  </a>
+                <a
+                  className={styles.footer_container_top_chapters_item}
+                  key={index}
+                  onClick={() => {
+                    navigate('/exchange')
+                  }}
+                >
+                  <h4>{item.title[language] || item.title.ru}</h4>
+                  <div>
+                    {item.items.map((subItem, subIndex) => (
+                      <div key={subIndex} className={styles.footer_container_top_chapters_subitem}>
+                        {subItem[language] || subItem.ru}
+                      </div>
+                    ))}
+                  </div>
+                </a>
               ))}
             </div>
           </div>

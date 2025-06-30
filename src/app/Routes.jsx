@@ -1,15 +1,15 @@
 // src/AppRoutes.jsx
-import { Routes, Route } from 'react-router-dom';
-import { HomePage } from '@/pages/home-page';
-import { ProfilePage } from '@/pages/profile-page';
-import { ExchangerPage } from '@/pages/exchanger-page';
+import { Routes, Route } from 'react-router-dom'
+import { HomePage } from '@/pages/home-page'
+import { ProfilePage } from '@/pages/profile-page'
+import { ExchangerPage } from '@/pages/exchanger-page'
 
 // Новые страницы
-import { WaitingTransactionPage } from '@/pages/transaction-pages/WaitingTransactionPage';
-import { TransactionCompletedPage } from '@/pages/transaction-pages/TransactionCompletedPage';
+import { WaitingTransactionPage } from '@/pages/transaction-pages/WaitingTransactionPage'
+import { TransactionCompletedPage } from '@/pages/transaction-pages/TransactionCompletedPage'
 
 // Защита маршрутов
-import { ProtectedRoute } from './ProtectedRoute';
+import { ProtectedRoute } from './ProtectedRoute'
 
 const AppRoutes = () => {
   return (
@@ -56,7 +56,7 @@ const AppRoutes = () => {
         }
       />
     </Routes>
-  );
-};
+  )
+}
 
-export default AppRoutes;
+export default AppRoutes

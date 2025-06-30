@@ -1,34 +1,34 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react'
 
-const LanguageContext = createContext();
+const LanguageContext = createContext()
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
-    return localStorage.getItem('app-language') || 'ru';
-  });
+    return localStorage.getItem('app-language') || 'ru'
+  })
 
   // Сохраняем язык в localStorage
   useEffect(() => {
-    localStorage.setItem('app-language', language);
-  }, [language]);
+    localStorage.setItem('app-language', language)
+  }, [language])
 
   // Обновляем атрибут lang у <html>
   useEffect(() => {
-    document.documentElement.setAttribute('lang', language);
-  }, [language]);
+    document.documentElement.setAttribute('lang', language)
+  }, [language])
 
   // Функция для переключения языка
   const toggleLanguage = () => {
-    const newLang = language === 'ru' ? 'en' : 'ru';
-    setLanguage(newLang);
-  };
+    const newLang = language === 'ru' ? 'en' : 'ru'
+    setLanguage(newLang)
+  }
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
-  );
-};
+  )
+}
 
 // Хук для использования контекста
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => useContext(LanguageContext)

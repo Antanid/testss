@@ -1,27 +1,27 @@
-import AppRoutes from './Routes';
-import { useAuth } from '@/shared/hooks/useAuth';
-import { Header } from '@/widgets/header';
-import { Footer } from '@/widgets/footer';
-import { Support } from '@/widgets/support/Support';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import React, { useEffect, useState } from 'react';
+import AppRoutes from './Routes'
+import { useAuth } from '@/shared/hooks/useAuth'
+import { Header } from '@/widgets/header'
+import { Footer } from '@/widgets/footer'
+import { Support } from '@/widgets/support/Support'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import React, { useEffect, useState } from 'react'
 
 function App() {
-  const { isAuthenticated } = useAuth();
-  const [fadeOut, setFadeOut] = useState(false);
-  const [showSplash, setShowSplash] = useState(true);
+  const { isAuthenticated } = useAuth()
+  const [fadeOut, setFadeOut] = useState(false)
+  const [showSplash, setShowSplash] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFadeOut(true);
+      setFadeOut(true)
       const hideTimer = setTimeout(() => {
-        setShowSplash(false);
-      }, 500); // время анимации fade-out
-      return () => clearTimeout(hideTimer);
-    }, 500); // время показа splash
-    return () => clearTimeout(timer);
-  }, []);
+        setShowSplash(false)
+      }, 500) // время анимации fade-out
+      return () => clearTimeout(hideTimer)
+    }, 500) // время показа splash
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <>
@@ -44,6 +44,6 @@ function App() {
         </div>
       )}
     </>
-  );
+  )
 }
-export default App;
+export default App

@@ -3,7 +3,7 @@
 .transaction__section {
   display: flex;
   flex-direction: row;
-  gap: clmp(.8rem, 1rem);
+  gap: clmp(0.8rem, 1rem);
   @media (max-width: $bp_mobile) {
     flex-direction: column;
   }
@@ -32,11 +32,12 @@
   &__top {
     display: flex;
     flex-direction: column;
-    gap: clmp(.8rem, 1.3rem)
+    gap: clmp(0.8rem, 1.3rem);
   }
 }
 
-.transaction__left__center, .transaction__left__bottom {
+.transaction__left__center,
+.transaction__left__bottom {
   display: flex;
   justify-content: space-between;
   pointer-events: none;
@@ -87,10 +88,9 @@
     width: 40%;
     height: 40%;
     path {
-      stroke: var(--ff-color)
+      stroke: var(--ff-color);
     }
   }
-  
 }
 
 .transaction__center {
@@ -101,7 +101,7 @@
   gap: clamp(2.3rem, 3vw, 3.5rem);
   position: relative;
 
-  .qr-button__container{
+  .qr-button__container {
     $size: clmp(2rem, 3rem);
     position: absolute;
     display: flex;
@@ -116,8 +116,8 @@
     transition: $defl-transit;
     cursor: pointer;
 
-
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background-color: var(--bg-accent-color);
       .qr-button__icon path {
         stroke: #fff;
@@ -126,8 +126,8 @@
     }
 
     &:active {
-      transition: .2s;
-      transform: scale(.5);
+      transition: 0.2s;
+      transform: scale(0.5);
     }
   }
 
@@ -172,27 +172,28 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 3rem;
-  @media(max-width: $bp_mobile) {
+  @media (max-width: $bp_mobile) {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
   }
-  
 
-  .text_h1, .text_h4 {
+  .text_h1,
+  .text_h4 {
     color: #fff;
   }
 
-  &__bottom, &__top {
+  &__bottom,
+  &__top {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: clmp(.8rem, 1rem);
+    gap: clmp(0.8rem, 1rem);
   }
 
   &__top {
     gap: clmp(0rem, 0.5rem);
-    @media(max-width: $bp_mobile) {
+    @media (max-width: $bp_mobile) {
       min-width: arem(10rem);
     }
 
@@ -215,7 +216,7 @@
     color: var(--ff-silent-color);
 
     &:active {
-      transition: .2s;
+      transition: 0.2s;
       color: #fff;
     }
   }
@@ -226,21 +227,21 @@
     min-width: $size;
     height: $size;
     min-height: $size;
-    transition: .2s;
+    transition: 0.2s;
 
     &:hover {
       transform: scale(1.2);
       path {
-        stroke-opacity: .8;
+        stroke-opacity: 0.8;
       }
     }
 
     &:active {
-        transition: .1s;
-        transform: scale(.8);
-        path {
-          stroke-opacity: 4;
-        }
+      transition: 0.1s;
+      transform: scale(0.8);
+      path {
+        stroke-opacity: 4;
+      }
     }
   }
 }
@@ -258,7 +259,7 @@
 }
 
 .text_desclaimer {
-  font-size: clmp(.65rem, .8rem);
+  font-size: clmp(0.65rem, 0.8rem);
   color: var(--ff-silent-color);
   font-weight: 500;
   width: 73%;
@@ -287,7 +288,7 @@
   flex-direction: row;
   gap: 1rem;
 
-  @media(max-width: 1750px) {
+  @media (max-width: 1750px) {
     flex-direction: column;
   }
 

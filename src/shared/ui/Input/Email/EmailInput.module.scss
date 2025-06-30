@@ -24,13 +24,13 @@
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    height: clmp(.8rem, 1.1rem);
+    height: clmp(0.8rem, 1.1rem);
     pointer-events: none;
-    transition: filter .3s;
+    transition: filter 0.3s;
     filter: var(--icon-input-color);
   }
 
   &_errorMessage {
-    @include input-error-message
+    @include input-error-message;
   }
 }

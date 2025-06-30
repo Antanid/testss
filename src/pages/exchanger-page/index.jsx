@@ -1,1 +1,1 @@
-export { ExchangerPage } from './ui/ExchangerPage';
+export { ExchangerPage } from './ui/ExchangerPage'

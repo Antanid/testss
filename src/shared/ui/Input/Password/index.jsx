@@ -1,91 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import styles from './PasswordInput.module.scss';
-import { useLanguage } from '@/shared/lang';
+import React, { useState, useEffect } from 'react'
+import styles from './PasswordInput.module.scss'
+import { useLanguage } from '@/shared/lang'
 
 const PasswordInput = ({
-  name = "password",
-  id = "inputPassword",
+  name = 'password',
+  id = 'inputPassword',
   required = true,
   value: propValue,
   onChange: propOnChange,
   onValidate,
   isTouched,
   passwordToCompare,
-  withVisibilityToggle, 
+  withVisibilityToggle,
   ...props
 }) => {
-  const { language } = useLanguage();
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [error, setError] = useState('');
+  const { language } = useLanguage()
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [error, setError] = useState('')
 
-  const isControlled = propValue !== undefined;
-  const [internalValue, setInternalValue] = useState(propValue || '');
-  const value = isControlled ? propValue : internalValue;
+  const isControlled = propValue !== undefined
+  const [internalValue, setInternalValue] = useState(propValue || '')
+  const value = isControlled ? propValue : internalValue
 
-  const showToggleButton = withVisibilityToggle !== undefined ? withVisibilityToggle : false;
+  const showToggleButton = withVisibilityToggle !== undefined ? withVisibilityToggle : false
 
-  const placeholder = language === 'en' ? 'Enter password' : 'Введите пароль';
-  const invalidMessage = language === 'en'
-    ? '≥8 · A-Z · 0-9 👈'
-    : '≥8 · A-Z · 0-9 👈';
+  const placeholder = language === 'en' ? 'Enter password' : 'Введите пароль'
+  const invalidMessage = language === 'en' ? '≥8 · A-Z · 0-9 👈' : '≥8 · A-Z · 0-9 👈'
 
-  const validatePassword = (password) => {
+  const validatePassword = password => {
     if (!password && required) {
-      return language === 'en' ? 'Password is required' : 'Пароль обязателен 👈';
+      return language === 'en' ? 'Password is required' : 'Пароль обязателен 👈'
     }
 
-    const minLength = 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasNumber = /\d/.test(password);
+    const minLength = 8
+    const hasUpperCase = /[A-Z]/.test(password)
+    const hasNumber = /\d/.test(password)
 
     if (password.length < minLength || !hasUpperCase || !hasNumber) {
-      return invalidMessage;
+      return invalidMessage
     }
 
-    return '';
-  };
+    return ''
+  }
 
-  const handleChange = (e) => {
-    const newValue = e.target.value;
+  const handleChange = e => {
+    const newValue = e.target.value
 
     if (!isControlled) {
-      setInternalValue(newValue);
+      setInternalValue(newValue)
     }
 
     if (propOnChange) {
-      propOnChange(e);
+      propOnChange(e)
     }
 
-    let errorMessage = validatePassword(newValue);
+    let errorMessage = validatePassword(newValue)
 
     if (passwordToCompare !== undefined && newValue !== passwordToCompare) {
-      errorMessage = language === 'en'
-        ? 'Passwords do not match'
-        : 'Пароли не совпадают';
+      errorMessage = language === 'en' ? 'Passwords do not match' : 'Пароли не совпадают'
     }
 
-    setError(errorMessage);
+    setError(errorMessage)
 
     if (onValidate) {
-      onValidate({ value: newValue, error: errorMessage });
+      onValidate({ value: newValue, error: errorMessage })
     }
-  };
+  }
 
   const togglePasswordVisibility = () => {
-    setIsPasswordVisible((prev) => !prev);
-  };
+    setIsPasswordVisible(prev => !prev)
+  }
 
   useEffect(() => {
     if (isTouched) {
-      handleChange({ target: { value } });
+      handleChange({ target: { value } })
     }
-  }, [isTouched]);
+  }, [isTouched])
 
   useEffect(() => {
     if (value && passwordToCompare !== undefined) {
-      handleChange({ target: { value } });
+      handleChange({ target: { value } })
     }
-  }, [passwordToCompare]);
+  }, [passwordToCompare])
 
   return (
     <div className={styles.PasswordInput_container}>
@@ -109,7 +105,7 @@ const PasswordInput = ({
           aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
         >
           <img
-            src={isPasswordVisible ? "login/password_view.svg" : "login/password.svg"}
+            src={isPasswordVisible ? 'login/password_view.svg' : 'login/password.svg'}
             alt=""
             className={styles.PasswordInput_icon}
           />
@@ -117,7 +113,7 @@ const PasswordInput = ({
       )}
       {error && <div className={styles.PasswordInput_errorMessage}>{error}</div>}
     </div>
-  );
-};
+  )
+}
 
-export default PasswordInput;
+export default PasswordInput

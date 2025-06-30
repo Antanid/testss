@@ -1,8 +1,8 @@
-import { useTheme } from '@/shared/theme';
+import { useTheme } from '@/shared/theme'
 
-export const ThemedIcon = ({ children, className, viewBox, type='fill' }) => {
-  const { theme } = useTheme();
-  const fill = theme === 'dark' ? '#FFFFFF' : '#151515';
+export const ThemedIcon = ({ children, className, viewBox, type = 'fill' }) => {
+  const { theme } = useTheme()
+  const fill = theme === 'dark' ? '#FFFFFF' : '#151515'
 
   return (
     <svg
@@ -12,9 +12,9 @@ export const ThemedIcon = ({ children, className, viewBox, type='fill' }) => {
       role="img"
       aria-hidden="true"
     >
-      <g fill={type === 'fill' ? fill : 'none'} stroke={type === 'stroke' ? fill : 'none'} > 
+      <g fill={type === 'fill' ? fill : 'none'} stroke={type === 'stroke' ? fill : 'none'}>
         {children}
       </g>
     </svg>
-  );
-};
+  )
+}

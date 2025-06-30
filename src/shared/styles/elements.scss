@@ -1,6 +1,5 @@
 @use '@/shared/styles/variables.scss' as *;
 
-
 // #################################################
 .page {
   padding-top: clmp(7rem, 10rem);
@@ -26,10 +25,8 @@
   gap: clmp(1.5rem, 2.5rem);
 }
 
-
 // #################################################
 .container {
-
   &_default {
     background-color: var(--bg-cont-color);
     border-radius: 1rem;
@@ -48,7 +45,6 @@
     transition: all $defl-transit;
   }
 }
-
 
 // #################################################
 .text {
@@ -76,7 +72,7 @@
   }
 
   &_h4 {
-    font-size: clmp(.8rem, 1.1rem);
+    font-size: clmp(0.8rem, 1.1rem);
     font-weight: 500;
     line-height: 1;
 
@@ -85,7 +81,7 @@
     }
 
     &_gray {
-      color: var(--ff-muted-color)
+      color: var(--ff-muted-color);
     }
 
     &_dark-gray {
@@ -94,17 +90,17 @@
   }
 
   &_h5 {
-    font-size: clmp(.7rem, .9rem);
+    font-size: clmp(0.7rem, 0.9rem);
     font-weight: 500;
-    line-height: .9;
+    line-height: 0.9;
   }
 
   &_p {
-    font-size: clmp(.75rem, 1rem);
+    font-size: clmp(0.75rem, 1rem);
     font-weight: 600;
 
     &_light {
-      font-size: clmp(.65rem, .87rem);
+      font-size: clmp(0.65rem, 0.87rem);
       font-weight: 400;
       color: var(--p-light-color);
     }
@@ -116,9 +112,9 @@
   background-color: var(--bg-l-color);
   outline: 1px solid var(--outline-color);
   border-radius: 1.5rem;
-  padding: .8rem clmp(2rem, 3rem);
+  padding: 0.8rem clmp(2rem, 3rem);
   font-weight: 500;
-  font-size: clmp(.9rem, 1.1rem);
+  font-size: clmp(0.9rem, 1.1rem);
   transition: all $defl-transit;
 
   &:hover {
@@ -126,8 +122,8 @@
   }
 
   &:active {
-    transition: transform .1s ease-in-out;
-    transform: scale(.9);
+    transition: transform 0.1s ease-in-out;
+    transform: scale(0.9);
   }
 
   &_active {
@@ -142,11 +138,11 @@
   }
 
   &_submit {
-    margin-top: .7rem;
+    margin-top: 0.7rem;
     pointer-events: all;
     width: 100%;
     border-radius: 0.8rem;
-    font-size: .95rem;
+    font-size: 0.95rem;
     padding: clmp(1rem, 1.3rem) 2rem;
 
     &:hover {
@@ -157,8 +153,8 @@
   &_close {
     height: 100%;
     font-weight: 600;
-    transition: transform .3s ease-in-out;
-    font-size: clmp(.8rem, 1rem);
+    transition: transform 0.3s ease-in-out;
+    font-size: clmp(0.8rem, 1rem);
     color: #fff;
 
     &:hover {
@@ -166,8 +162,8 @@
     }
 
     &:active {
-      transition: transform .2s ease-in-out;
-      transform: rotate(180deg) scale(.9);
+      transition: transform 0.2s ease-in-out;
+      transform: rotate(180deg) scale(0.9);
     }
   }
 }
@@ -180,10 +176,10 @@
 }
 
 .input-error-label {
-  animation: fadeInRight .4s ease-out forwards;
+  animation: fadeInRight 0.4s ease-out forwards;
   color: var(--error-color);
   float: right;
-  font-size: clmp(.8rem, .9rem);
+  font-size: clmp(0.8rem, 0.9rem);
 }
 
 .input {
@@ -195,7 +191,7 @@
   outline: 1px solid var(--outline-color);
   border-radius: 0.8rem;
   padding: 0 1rem;
-  font-size: clmp(.9rem, 1rem);
+  font-size: clmp(0.9rem, 1rem);
   font-family: $ff-base;
   font-weight: 500;
   transition: all $defl-transit;
@@ -215,7 +211,7 @@
 
   &_find {
     max-height: clmp(2.5rem, 3rem);
-    font-size: clmp(.7rem, .9rem);
+    font-size: clmp(0.7rem, 0.9rem);
 
     &:focus {
       outline-color: var(--bg-accent-color);
@@ -242,16 +238,16 @@
       $input_icon_size: clamp(40%, 4vw, 55%);
       height: $input_icon_size;
       width: $input_icon_size;
-      transition: transform .3s ease;
+      transition: transform 0.3s ease;
 
       path {
         transition: stroke $defl-transit;
-        stroke: var(--ff-color)
+        stroke: var(--ff-color);
       }
     }
 
     &_edit {
-      .image  {
+      .image {
         transform: rotate(45deg);
         path {
           stroke: var(--bg-accent-color);
@@ -296,9 +292,9 @@
   outline: 1px solid var(--outline-color);
   background-color: var(--bg-l-color);
   color: var(--p-light-color);
-  font-size: clmp(.6rem, .8rem);
+  font-size: clmp(0.6rem, 0.8rem);
   cursor: pointer;
-  transition: all .2s ;
+  transition: all 0.2s;
 
   &:hover {
     background-color: var(--outline-color);
@@ -309,7 +305,7 @@
 // TOGGLE BUTTON
 $switch-width: clmp(2.5rem, 3.125rem); // от ~40px до ~50px
 $switch-height: clmp(1.25rem, 1.5rem); // от ~20px до ~24px
-$handle-size: clmp(1rem, 1.24rem);     // от ~16px до ~20px
+$handle-size: clmp(1rem, 1.24rem); // от ~16px до ~20px
 $transition-time: 0.4s;
 
 .toggle-switch {
@@ -332,7 +328,6 @@ $transition-time: 0.4s;
           calc($switch-width - $handle-size - 2px - 0.125rem) // 2px = 0.125rem
         );
         background-color: #fff;
-        
       }
     }
   }

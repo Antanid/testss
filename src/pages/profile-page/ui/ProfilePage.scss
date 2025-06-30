@@ -18,7 +18,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
     gap: 1rem;
     padding: 1.5rem $profile_container_w_padding;
     border-bottom: 1px solid var(--outline-color);
-    @media(max-width: $bp_mobile) {
+    @media (max-width: $bp_mobile) {
       display: grid;
       grid-template-columns: repeat(2 1fr);
       justify-content: center;
@@ -27,7 +27,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
     }
 
     .button {
-      @media(max-width: $bp_mobile) {
+      @media (max-width: $bp_mobile) {
         &:nth-child(1) {
           grid-row: 1;
           order: 1;
@@ -57,15 +57,15 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
     box-sizing: border-box;
     position: relative;
 
-    @media(max-width: $bp_mobile) {
+    @media (max-width: $bp_mobile) {
       flex-direction: column;
       align-items: flex-start;
     }
   }
 
-// ##################################################################
-// ==================================================================
-// ##################################################################
+  // ##################################################################
+  // ==================================================================
+  // ##################################################################
 
   &__left {
     animation: fadeIn 1s ease-out forwards;
@@ -112,7 +112,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
   &__item {
     flex: 1;
     padding: clmp(1rem, 1.8rem);
-    padding-bottom: .9rem;
+    padding-bottom: 0.9rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -120,12 +120,16 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
     gap: clmp(2rem, 2.5rem);
 
     &:nth-child(1) {
-      .referal__item__image svg path { stroke: #fff }
-      .text { color: #fff } 
+      .referal__item__image svg path {
+        stroke: #fff;
+      }
+      .text {
+        color: #fff;
+      }
     }
 
     &__image {
-      flex: .3;
+      flex: 0.3;
       padding-top: clamp(0rem, 0.1vw, 0.5rem);
       svg {
         min-height: 2.8rem;
@@ -133,15 +137,15 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
 
         path {
           transition: stroke $defl-transit;
-          stroke: var(--ff-color)
+          stroke: var(--ff-color);
         }
 
-        @media(max-width: $bp_mobile) {
+        @media (max-width: $bp_mobile) {
           height: clmp(0.5rem, 1rem);
           width: clmp(0.5rem, 1rem);
         }
       }
-      @media(max-width: $bp_mobile) {
+      @media (max-width: $bp_mobile) {
         padding-top: 0;
         max-height: 2.8rem;
       }
@@ -158,7 +162,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
       justify-content: flex-start;
       gap: 0.8rem;
 
-      @media(max-width: $bp_mobile) {
+      @media (max-width: $bp_mobile) {
         flex-direction: column;
         align-items: center;
 
@@ -180,7 +184,6 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
     gap: 1.1rem;
 
     &__input {
-
       &__icon {
         position: absolute;
         right: 1rem;
@@ -200,16 +203,16 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
           $input_icon_size: clamp(40%, 4vw, 55%);
           height: $input_icon_size;
           width: $input_icon_size;
-          transition: transform .3s ease;
+          transition: transform 0.3s ease;
 
           path {
             transition: stroke $defl-transit;
-            stroke: var(--ff-color)
+            stroke: var(--ff-color);
           }
         }
 
         &_edit {
-          .image  {
+          .image {
             transform: rotate(45deg);
             path {
               stroke: var(--bg-accent-color);
@@ -223,7 +226,6 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
 
 // Right
 .referal {
-
   &__table {
     padding: 0.1rem;
     display: flex;
@@ -248,15 +250,14 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
       height: 3rem;
       gap: 4rem;
       min-width: 53rem;
-      transition: .3s ease-out;
+      transition: 0.3s ease-out;
 
       &:hover:not(:first-child) {
         background-color: var(--bg-accent-color);
         .text {
-          transition: .2s ease;
+          transition: 0.2s ease;
           color: #fff;
         }
-        
       }
 
       &__cell {
@@ -351,7 +352,6 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
   }
 
   &__top {
-
     .text_h3 {
       display: flex;
       align-items: center;
@@ -410,13 +410,13 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
   }
 
   &__container {
-
-    &__left, &__right {
+    &__left,
+    &__right {
       flex: 1;
       position: relative;
       box-sizing: border-box;
     }
-  
+
     &__left {
       flex: 0.5;
       display: flex;
@@ -426,7 +426,6 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
       gap: clmp(2rem, 5rem);
       width: 100%;
     }
-
   }
 
   &__inner {
@@ -471,7 +470,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
 .balance__item {
   $padding_bottom: clmp(1.3rem, 1.8rem);
   padding: $padding_bottom 2rem;
-  padding-top: .8rem;
+  padding-top: 0.8rem;
   display: flex;
   flex-direction: column;
   gap: clmp(1rem, 2rem);
@@ -497,7 +496,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
       text-wrap: nowrap;
       .text {
         font-weight: 600;
-        font-size: clmp(.8rem, 1rem);
+        font-size: clmp(0.8rem, 1rem);
       }
 
       &:hover {
@@ -507,13 +506,13 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
       }
 
       @media (max-width: $bp_mobile) {
-        padding: .8rem 1rem;
+        padding: 0.8rem 1rem;
       }
-      
     }
   }
 
-  .text_h4, .text_h1 {
+  .text_h4,
+  .text_h1 {
     color: #fff;
   }
 
@@ -545,7 +544,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
 .balance__free-exchange {
   $padding_bottom: clmp(1.3rem, 1.8rem);
   padding: $padding_bottom 2rem;
-  padding-top: .8rem;
+  padding-top: 0.8rem;
   display: flex;
   flex-direction: column;
   gap: clmp(1rem, 2rem);
@@ -577,7 +576,7 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
 }
 
 .container__free-exchange__hint {
-  padding: clmp(.7rem, 1rem) 2rem;
+  padding: clmp(0.7rem, 1rem) 2rem;
   background-color: var(--bg-gray-color);
   cursor: pointer;
   display: flex;
@@ -586,19 +585,21 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
   justify-content: center;
   gap: 2rem;
   height: clmp(2.3rem, 3.1rem);
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   overflow: hidden;
   box-sizing: border-box;
 
   .text_h4:last-child {
     box-sizing: border-box;
     line-height: clmp(1.5rem, 1.8rem);
-    font-size: clmp(.8rem, 1rem);
+    font-size: clmp(0.8rem, 1rem);
     font-weight: 500;
     position: absolute;
     opacity: 0;
     transition: 0s;
-    transition: transform .6s ease-in-out, color 2s;
+    transition:
+      transform 0.6s ease-in-out,
+      color 2s;
     transform: translateY(10rem);
     margin: 2rem;
     color: var(--bg-l-color);
@@ -652,16 +653,15 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
   }
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   .container__free-exchange__hint {
     .text_h4:first-child {
       color: #ffffff7c;
     }
   }
-  
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   .container__free-exchange__hint {
     .text_h4:first-child {
       color: #0000007c;
@@ -747,4 +747,3 @@ $profile_container_w_padding: clmp(1rem, 2.5rem);
     }
   }
 }
-

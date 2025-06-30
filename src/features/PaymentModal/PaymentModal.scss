@@ -44,7 +44,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: modalOverlayFadeIn .4s forwards;
+  animation: modalOverlayFadeIn 0.4s forwards;
 }
 
 .payment-modal__content {
@@ -137,7 +137,7 @@
             transform: scaleY(1.2) scaleX(1) rotate(90deg);
           }
         }
-        
+
         .icon__svg path {
           stroke: var(--bg-accent-color);
         }
@@ -161,10 +161,10 @@
 
     &__svg {
       height: 30%;
-      transition: transform .4s;
+      transition: transform 0.4s;
 
       path {
-        transition: all .2s;
+        transition: all 0.2s;
         stroke: var(--ff-color);
       }
 
@@ -185,12 +185,11 @@
   }
 }
 
-
 .payment-modal__method {
   position: absolute;
   top: clmp(4rem, 5rem);
   box-sizing: border-box;
-  animation: fadeIn .2s ease-out forwards;
+  animation: fadeIn 0.2s ease-out forwards;
   opacity: 1;
   display: none;
   width: 102%;
@@ -227,7 +226,7 @@
   }
 
   &__input-container {
-    animation: fadeIn .4s ease-out forwards;
+    animation: fadeIn 0.4s ease-out forwards;
     display: flex;
     align-items: center;
     position: relative;
@@ -272,20 +271,20 @@
   }
 
   &__items-wrapper {
-    animation: fadeIn .4s ease-out forwards;
+    animation: fadeIn 0.4s ease-out forwards;
     border-radius: 1rem;
     overflow: hidden;
     background-color: var(--outline-color);
   }
 
   &__item {
-    animation: fadeIn .4s ease-out forwards;
+    animation: fadeIn 0.4s ease-out forwards;
     box-sizing: border-box;
     width: 100%;
     height: $item_size;
     min-height: $item_size;
     padding: 0 1rem;
-    transition: .2s;
+    transition: 0.2s;
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -314,8 +313,8 @@
         padding: 0.3rem;
         box-sizing: border-box;
         opacity: 0;
-        transform: scale(.6);
-        transition: transform .2s ease-in-out;
+        transform: scale(0.6);
+        transition: transform 0.2s ease-in-out;
 
         .icon {
           path {
@@ -335,7 +334,7 @@
   opacity: 0.3;
   outline: 2px solid var(--bg-accent-color);
   background: none;
-  transform: scale(.98);
+  transform: scale(0.98);
 
   svg path {
     stroke: var(--bg-accent-color);

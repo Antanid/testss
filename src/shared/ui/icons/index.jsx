@@ -1,4 +1,4 @@
-export { Y2kStarIcon } from './Y2kStarIcon';
+export { Y2kStarIcon } from './Y2kStarIcon'
 export { ArrowRightIcon } from './ArrowRightIcon'
 export { ClockIcon } from './ClockIcon'
 export { ArrowCornerIcon } from './ArrowCornerIcon'

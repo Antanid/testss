@@ -1,32 +1,35 @@
-
 .GridPattern {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  width: 100vw;
+  height: clamp(5rem, 30vw + 43vh, 67rem);
+  overflow: hidden;
+  z-index: -99;
+  pointer-events: auto;
+  transform: translateX(-8%);
+  transition: none;
+
+  // -webkit-mask-image: radial-gradient(circle at center, rgba(255,255,255,1) 20%, rgba(255,255,255,0.2) 0%);
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.8) 10%,
+    rgba(255, 255, 255, 0.2) 0%
+  );
+  mask-size: cover;
+
+  .cell {
     position: absolute;
-    top: 3rem;
-    left: 0;
-    width: 100vw;
-    height: clamp(5rem, 30vw + 43vh, 67rem);
-    overflow: hidden;
-    z-index: -99;
-    pointer-events: auto;
-    transform: translateX(-8%);
-    transition: none;
-  
-    // -webkit-mask-image: radial-gradient(circle at center, rgba(255,255,255,1) 20%, rgba(255,255,255,0.2) 0%);
-    mask-image: radial-gradient(circle at center, rgba(255,255,255,0.8) 10%, rgba(255,255,255,0.2) 0%);
-    mask-size: cover;
-  
-    .cell {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      opacity: 1;
-      transition: filter 0.2s ease;
-      pointer-events: none;
-    }
-  
-    svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    transition: filter 0.2s ease;
+    pointer-events: none;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 }

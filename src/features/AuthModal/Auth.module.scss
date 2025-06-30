@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: modalOverlayFadeIn .4s forwards;
+  animation: modalOverlayFadeIn 0.4s forwards;
 }
 
 .modalContainer {
@@ -81,7 +81,7 @@
       outline: 1px solid #ffffff11;
       transition: $defl-transit;
       font-weight: 600;
-      font-size: clmp(.8rem, 1rem);
+      font-size: clmp(0.8rem, 1rem);
 
       &--active {
         background-color: var(--bg-accent-color);
@@ -89,11 +89,11 @@
       }
 
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
       }
 
       &:active {
-        transition: .1s ease-in-out;
+        transition: 0.1s ease-in-out;
         filter: brightness(1.5);
       }
     }
@@ -112,21 +112,21 @@
       margin-top: clmp(1.2rem, 1.5rem);
       height: clmp(2.8rem, 3rem);
       transition: $defl-transit;
-      font-size: clmp(.9rem, 1rem);
+      font-size: clmp(0.9rem, 1rem);
       font-weight: 600;
 
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
       }
 
       &:active {
-        transition: .1s ease-in-out;
+        transition: 0.1s ease-in-out;
         filter: brightness(1.5);
       }
 
       &:disabled {
         filter: saturate(0);
-        opacity: .5;
+        opacity: 0.5;
         pointer-events: none;
       }
     }
@@ -134,12 +134,13 @@
 }
 
 // [data-theme="dark"] {
- 
+
 // }
 
-[data-theme="light"] {
+[data-theme='light'] {
   .modalContent_logo {
-    filter: brightness(0) saturate(100%) invert(0%) sepia(55%) saturate(3697%) hue-rotate(118deg) brightness(97%) contrast(87%);
+    filter: brightness(0) saturate(100%) invert(0%) sepia(55%) saturate(3697%) hue-rotate(118deg)
+      brightness(97%) contrast(87%);
   }
 
   .modalContent_categories_button {

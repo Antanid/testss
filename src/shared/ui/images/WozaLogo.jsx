@@ -1,7 +1,5 @@
-import { ThemedImage } from './ThemedImage';
+import { ThemedImage } from './ThemedImage'
 
 export const WozaLogo = () => {
-    return (
-        <ThemedImage src="/wozalogo_font.svg" alt="Логотип" id='logoFont' />
-    );
-};
+  return <ThemedImage src="/wozalogo_font.svg" alt="Логотип" id="logoFont" />
+}
