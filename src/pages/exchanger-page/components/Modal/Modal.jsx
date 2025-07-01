@@ -39,6 +39,7 @@ const SlideModal = ({
           width: '100%',
           height: '60vh',
           overflowY: 'auto',
+          zIndex: 10,
           margin: 0,
           ...(isBottom
             ? {
