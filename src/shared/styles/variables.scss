@@ -45,7 +45,7 @@ $ff-alt: 'Inter', sans-serif;
 
   --bg-select-exchange: #171717;
   --border-select: rgba(255, 255, 255, 0.05);
-  --color-payment: rgba(255, 255, 255, 0.5)
+  --color-payment: rgba(255, 255, 255, 0.5);
 }
 
 [data-theme='light'] {
@@ -80,7 +80,7 @@ $ff-alt: 'Inter', sans-serif;
 
   --bg-select-exchange: #f0f0f0;
   --border-select: rgba(0, 0, 0, 0.1);
-  --color-payment: rgba(0, 0, 0, 0.5)
+  --color-payment: rgba(0, 0, 0, 0.5);
 }
 
 //==============================
@@ -353,15 +353,6 @@ $block_split_distance: clamp(3rem, 3rem + 3vw, 8rem);
 
 //==============================
 // Animations
-@keyframes fadeIn {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-  }
-}
 
 @keyframes fadeInBottom {
   from {
@@ -473,7 +464,6 @@ $block_split_distance: clamp(3rem, 3rem + 3vw, 8rem);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 }

@@ -1,7 +1,6 @@
 @use '@/shared/styles/variables.scss' as *;
 
 .autoSelect__wrapper {
-  position: relative;
   user-select: none;
   width: 100%;
 }
@@ -13,7 +12,7 @@
   width: 100%;
   background-color: var(--bg-color);
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -35,7 +34,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #8947FF;
+  background: #8947ff;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   height: 78px;
@@ -117,26 +116,24 @@
   transition: background-color 0.2s ease;
   box-sizing: border-box;
   width: 100%;
-    span {
-      transition: $defl-transit;
-      margin-left: 0.5rem;
-    }
-    font-size: 0.95rem;
-    text-decoration: none;
-    text-wrap: nowrap;
-    color: var(--ff-color);
-    font-weight: 600;
+  span {
     transition: $defl-transit;
-    @include flex-row;
-    height: 90%;
-    display: flex;
-    border-bottom: 1px solid var(--line-color);
-    svg {
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-
+    margin-left: 0.5rem;
+  }
+  font-size: 0.95rem;
+  text-decoration: none;
+  text-wrap: nowrap;
+  color: var(--ff-color);
+  font-weight: 600;
+  transition: $defl-transit;
+  @include flex-row;
+  height: 90%;
+  display: flex;
+  border-bottom: 1px solid var(--line-color);
+  svg {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 
   &:nth-child(4) {
     display: flex;
@@ -158,7 +155,6 @@
         transform: none !important;
       }
     }
-
   }
 }
 
