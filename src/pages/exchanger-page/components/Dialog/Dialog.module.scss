@@ -40,6 +40,19 @@
   }
 }
 
+.bottom {
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 20px 20px 0 0;
+  max-height: 80vh;
+  width: 100%;
+  max-width: 600px;
+
+  animation: slideUp 0.3s ease forwards;
+}
+
 
 /* Размеры (пример, можно добавить больше) */
 .md {

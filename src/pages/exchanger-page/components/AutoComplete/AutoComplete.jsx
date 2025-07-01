@@ -54,6 +54,7 @@ const AutocompleteSelect = ({
         contentClassNames={styles.modal_content}
         disablePadding={true}
         size="md"
+        position={window.innerWidth >= 768 ? 'center' : 'bottom'}
       >
         <div className={styles.autoSelect__menu}>
           <div className={styles.autoSelect__header}>

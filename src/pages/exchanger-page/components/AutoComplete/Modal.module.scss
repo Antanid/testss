@@ -116,13 +116,13 @@
   transition: $defl-transit;
   @include flex-row;
   height: 90%;
-  display: flex;
   border-bottom: 1px solid var(--line-color);
   svg {
     opacity: 1 !important;
     transform: none !important;
   }
   .exchanger__coin {
+    width: 100% !important;
     &__icon-container{
       outline: none !important;
     }
@@ -132,11 +132,15 @@
 .autoSelect__item:nth-child(4) {
   display: flex;
   justify-content: space-between !important;
-  width: 100%;
+  width: 100% !important;
   padding: 24px;
-  /* flex-direction: column !important; <-- убрать это */
   flex-direction: row !important;
   align-items: center;
+
+
+  .check{
+    width: 16px !important;
+  }
 
   svg {
     $size: clmp(3rem, 4.6rem);
@@ -148,16 +152,18 @@
     margin-left: 0.5rem;
   }
   div {
-    width: auto !important; /* или 100%, если нужно */
+
     display: flex;
-
-
     svg {
       opacity: 1 !important;
       transform: none !important;
+      $size: clmp(3rem, 4.6rem);
+      width: $size;
+      min-width: $size;
     }
   }
 }
+
 
 
 .autoSelect__item:hover {

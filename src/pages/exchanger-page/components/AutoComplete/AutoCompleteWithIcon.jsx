@@ -60,6 +60,7 @@ const AutoCompleteWithIcon = ({
         contentClassNames={styles.modal_content}
         disablePadding={true}
         size="md"
+        position={window.innerWidth >= 768 ? 'center' : 'bottom'}
       >
         <div className={styles.autoSelect__menu}>
           <div className={styles.autoSelect__header}>
@@ -131,6 +132,7 @@ const AutoCompleteWithIcon = ({
                             background: '#8947FF',
                             marginLeft: 'auto',
                           }}
+                          className={styles.check}
                         >
                           <Check size={16} color="#fff" />
                         </div>
