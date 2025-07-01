@@ -25,6 +25,18 @@
   gap: clmp(1.5rem, 2.5rem);
 }
 
+.section_default {
+  @include padding-container(0);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clmp(1.5rem, 2.5rem);
+}
+
+
+
 // #################################################
 .container {
   &_default {
@@ -32,6 +44,14 @@
     border-radius: 1rem;
     outline: 1px solid var(--outline-color);
     overflow: hidden;
+    box-sizing: border-box;
+    transition: all $defl-transit;
+  }
+
+  &_manual {
+    background-color: var(--bg-cont-color);
+    border-radius: 1rem;
+    outline: 1px solid var(--outline-color);
     box-sizing: border-box;
     transition: all $defl-transit;
   }

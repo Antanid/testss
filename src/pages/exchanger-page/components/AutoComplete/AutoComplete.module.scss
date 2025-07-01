@@ -1,0 +1,104 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.dropdownWrapper {
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.dropdownMenu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000 !important;
+  max-height: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+}
+
+.dropdownMenuOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  margin-top: 10px;
+}
+
+
+.dropdown_header{
+  background: #8947FF;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  display: flex;
+  width: 100%;
+  height: 78px;
+  position: sticky;
+}
+.dropdown_header_content{
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dropdownMenu ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.dropdownMenu li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: var(--ff-color);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line-color);
+  transition: background-color 0.2s ease;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+
+}
+
+.searchWrapperContent{
+  border: 1px solid black;
+  margin: 20px;
+  padding: 12px;
+  border-radius: 15px;
+  border: 1px solid var(--border-select);
+}
+
+.searchWrapper svg {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ff-color);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem; /* справа большой отступ под иконку */
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--ff-color);
+  font-size: 1rem;
+  box-sizing: border-box;
+}

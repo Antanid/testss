@@ -3,6 +3,7 @@ import { useLanguage } from '@/shared/lang'
 import { AutoExchange } from './chapters/AutoExchange'
 import * as Icons from '@/shared/ui/icons'
 import * as Images from '@/shared/ui/images'
+import { ManualExchange } from '@/pages/exchanger-page/ui/chapters/ManualExchange'
 
 export const ExchangerPage = () => {
   const { language } = useLanguage()
@@ -188,6 +189,19 @@ export const ExchangerPage = () => {
     },
   ]
 
+  const manualStages = [
+    // Этап 1
+    {
+      ru: 'Этап 1',
+      en: 'Stage',
+    },
+    // Этап 2
+    {
+      ru: 'Адрес получателя1 ',
+      en: 'Recipient address',
+    },
+  ]
+
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Фикс. курс переключатель
   const [fixRateChecked, setFixRateChecked] = useState(false)
@@ -207,7 +221,7 @@ export const ExchangerPage = () => {
             <div className="bg-stars-pattern bg-stars-pattern__right">
               <Images.BgStars />
             </div>
-            <div className="container_default exchanger__container">
+            <div className="container_manual exchanger__container">
               {/* ~~~~~~~~~~~~~~~~~~| Разделы |~~~~~~~~~~~~~~~~~~~~~~ */}
               <div className="exchanger__chapters">
                 <div
@@ -259,10 +273,8 @@ export const ExchangerPage = () => {
                 )}
                 {/* ~~~~~~~~~~~~~~~~~~| Ручной обмен |~~~~~~~~~~~~~~~~~~~~~~ */}
                 {activeChapter === 1 && (
-                  <AutoExchange
-                    language={language}
-                    activeStage={activeStage}
-                    exchangeStages={exchangeStages}
+                  <ManualExchange
+                    exchangeStages={manualStages}
                     coinsData={coinsData}
                     sendCurrency={sendCurrency}
                     getCurrency={getCurrency}
@@ -274,15 +286,13 @@ export const ExchangerPage = () => {
                     amountCommission={amountCommission}
                     amountReceived={amountReceived}
                     commissionRate={commissionRate}
-                    fixRateChecked={fixRateChecked}
-                    handleToggleFixRate={handleToggleFixRate}
                   />
                 )}
               </div>
             </div>
           </div>
         </section>
-        <section className="section section__exchanger-info">
+        <section className="section_default section__exchanger-info">
           <div className="exchanger-info__item">
             <h2 className="text text_h2">
               <div className="icon-star">

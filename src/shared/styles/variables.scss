@@ -42,6 +42,9 @@ $ff-alt: 'Inter', sans-serif;
   --p-light-color: #ffffff7c;
 
   --error-color: #e74c3c;
+
+  --bg-select-exchange: #171717;
+  --border-select: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme='light'] {
@@ -73,6 +76,9 @@ $ff-alt: 'Inter', sans-serif;
   --outline-color: #30303018;
 
   --p-light-color: #0c0c0c;
+
+  --bg-select-exchange: #f0f0f0;
+  --border-select: rgba(0, 0, 0, 0.1);
 }
 
 //==============================

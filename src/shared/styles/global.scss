@@ -2,6 +2,7 @@
 @use '@/shared/styles/elements.scss' as *;
 @use '@/pages/profile-page/ui/ProfilePage.scss' as *;
 @use '@/pages/exchanger-page/ui/ExchangerPage.scss' as *;
+@use '@/pages/exchanger-page/ui/chapters/ManualExchange/ManualExchange.scss' as *;
 @use '@/pages/transaction-pages/TransactionsPages.scss' as *;
 @use '@/features/PaymentModal/PaymentModal.scss' as *;
 
