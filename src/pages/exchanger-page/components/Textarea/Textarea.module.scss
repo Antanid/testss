@@ -1,0 +1,28 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.manual_exchange_root {
+  width: 100%;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.textarea {
+  cursor: pointer;
+  background: var(--bg-select-exchange);
+  padding: 24px;
+  border-radius: 15px;
+  border: 1px solid var(--border-select);
+  width: 100%;
+  box-sizing: border-box;
+  resize: none !important;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-height: 78px;
+  color: var(--ff-color);
+
+  @media (max-width: 900px) {
+    max-height: 120px;
+  }
+
+}

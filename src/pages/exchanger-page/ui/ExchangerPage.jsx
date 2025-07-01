@@ -275,13 +275,9 @@ export const ExchangerPage = () => {
                 {activeChapter === 1 && (
                   <ManualExchange
                     exchangeStages={manualStages}
-                    coinsData={coinsData}
                     sendCurrency={sendCurrency}
                     getCurrency={getCurrency}
-                    setSendCurrency={setSendCurrency}
-                    setGetCurrency={setGetCurrency}
                     coinsSend={coinsSend}
-                    formatNumber={formatNumber}
                     initialAmount={initialAmount}
                     amountCommission={amountCommission}
                     amountReceived={amountReceived}

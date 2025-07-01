@@ -2,18 +2,18 @@ import HintButton from '@/features/HintButton.jsx'
 import { useLanguage } from '@/shared/lang/index.jsx'
 import { CaretRight } from 'phosphor-react'
 import AutocompleteSelect from '@/pages/exchanger-page/components/AutoComplete/AutoComplete.jsx'
-import { useState } from 'react'
 import { useTheme } from '@/shared/theme/index.jsx'
+import { DirectionIds } from '@/pages/exchanger-page/ui/chapters/ManualExchange/stage/enum.js'
 
-export const ManualFirstStage = ({ activeStage, exchangeStages, nextStageButton }) => {
+export const ManualFirstStage = ({
+  activeStage,
+  exchangeStages,
+  nextStageButton,
+  selectedDirection,
+  setSelectedDirection,
+}) => {
   const { language } = useLanguage()
   const { theme } = useTheme()
-
-  const [selectedDirection, setSelectedDirection] = useState({
-    id: 1,
-    ru: 'Крипта > наличные',
-    en: 'Crypto > Cash',
-  })
 
   const options = directions.map(dir => ({
     id: dir.id,
@@ -96,47 +96,47 @@ export const ManualFirstStage = ({ activeStage, exchangeStages, nextStageButton 
 
 const directions = [
   {
-    id: 1,
+    id: DirectionIds.CRYPTO_TO_CASH,
     ru: 'Крипта > наличные',
     en: 'Crypto > Cash',
   },
   {
-    id: 2,
+    id: DirectionIds.CRYPTO_TO_CASHLESS,
     ru: 'Крипта > безналичные',
     en: 'Crypto > Cashless',
   },
   {
-    id: 3,
+    id: DirectionIds.CRYPTO_TO_QR,
     ru: 'Крипта > QR Code (РФ)',
     en: 'Crypto > QR Code (RU)',
   },
   {
-    id: 4,
+    id: DirectionIds.CASH_TO_CRYPTO,
     ru: 'Наличные > Крипто',
     en: 'Cash > Crypto',
   },
   {
-    id: 5,
+    id: DirectionIds.CASH_TRANSFER_WORLDWIDE,
     ru: 'Перевод наличных по миру',
     en: 'Cash transfer worldwide',
   },
   {
-    id: 6,
+    id: DirectionIds.INTERNATIONAL_PAYMENT,
     ru: 'Международная оплата услуг',
     en: 'International payment for services',
   },
   {
-    id: 7,
+    id: DirectionIds.CRYPTO_EXCHANGE_RISK,
     ru: 'Обмен крипто-активов с любым % риска',
     en: 'Crypto assets exchange with any % risk',
   },
   {
-    id: 8,
+    id: DirectionIds.LEGALIZATION,
     ru: 'Легализация средств',
     en: 'Legalization of funds',
   },
   {
-    id: 9,
+    id: DirectionIds.OTHER,
     ru: 'Другое (предложу менеджеру)',
     en: 'Other (will consult manager)',
   },
