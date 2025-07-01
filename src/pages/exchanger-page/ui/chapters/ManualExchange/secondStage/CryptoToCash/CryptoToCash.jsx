@@ -7,7 +7,6 @@ import { useLanguage } from '@/shared/lang/index.jsx'
 import { useTheme } from '@/shared/theme/index.jsx'
 import { coinsData } from '@/utils/coinsData.jsx'
 import { Textarea } from '@/pages/exchanger-page/components/Textarea/index.js'
-import { BtnPrevStage } from '@/pages/exchanger-page/components/Buttons.jsx'
 
 // Валютная логика
 const commissionRate = 3 // Тестовый модификатор комиссии (В идале вынести в конфиг админки)
@@ -66,6 +65,8 @@ export const CryptoToCash = () => {
           commissionRate={commissionRate}
           formatNumber={formatNumber}
           swapCurrency={swapCurrency}
+          setSendCurrency={setSendCurrency}
+          setGetCurrency={setGetCurrency}
         />
 
         <div

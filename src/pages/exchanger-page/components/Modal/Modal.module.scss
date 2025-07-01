@@ -1,0 +1,160 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.modal_content{
+  background-color: var(--bg-color);
+  width: 100%;
+}
+
+.autoSelect__wrapper {
+  user-select: none;
+  width: 100%;
+  position: relative;
+}
+
+.autoSelect__menu {
+  width: 100%;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;           // важна высота для flex
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.autoSelect__header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #8947FF;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 78px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.autoSelect__headerContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.autoSelect__searchWrapper {
+  position: sticky;
+  top: 100px;
+  background: var(--bg-color);
+  z-index: 9;
+  padding: 8px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin: 14px 0;
+}
+
+
+.autoSelect__searchContent {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--border-select);
+  padding: 12px;
+  border-radius: 15px;
+}
+
+.autoSelect__searchContent svg {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ff-color);
+}
+
+.autoSelect__input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--ff-color);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.autoSelect__list {
+  margin: 0;
+  list-style: none;
+  overflow-y: auto;      // скролл именно здесь
+  flex-grow: 1;          // занимает оставшееся пространство
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-height: none;
+}
+.autoSelect__item {
+  display: flex;
+  justify-content: space-between !important;
+  text-align: left;
+  padding: 24px;
+  cursor: pointer;
+  color: var(--ff-color);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line-color);
+  box-sizing: border-box;
+  width: 100%;
+  span {
+
+    margin-left: 0.5rem;
+  }
+  font-size: 0.95rem;
+  text-decoration: none;
+  text-wrap: nowrap;
+  color: var(--ff-color);
+  font-weight: 600;
+  @include flex-row;
+  height: 90%;
+  display: flex;
+  border-bottom: 1px solid var(--line-color);
+  svg {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+
+
+  &:nth-child(4) {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+    padding: 24px;
+    span {
+      transition: $defl-transit;
+      margin-left: 0.5rem;
+    }
+    div {
+      @include flex-row;
+      width: 16px !important;
+      max-width: 16px !important;
+      min-width: 16px;
+      svg {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+  }
+}
+
+.autoSelect__item:hover {
+  transform: translateX(10px);
+}
+
+.autoSelect__noResults {
+  padding: 0.75rem 1rem;
+  color: var(--ff-muted-color);
+  font-style: italic;
+}
