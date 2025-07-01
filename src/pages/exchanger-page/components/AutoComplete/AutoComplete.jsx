@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './AutoComplete.module.scss'
 import { MagnifyingGlass, X, Check } from 'phosphor-react'
+import { useLanguage } from '@/shared/lang/index.jsx'
 
 const AutocompleteSelect = ({
   children,
@@ -10,6 +11,8 @@ const AutocompleteSelect = ({
   headerTitle,
   value = null,
 }) => {
+  const { language } = useLanguage()
+
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState('')
   const containerRef = useRef(null)
@@ -113,7 +116,9 @@ const AutocompleteSelect = ({
               )
             })
           ) : (
-            <li className={styles.autoSelect__noResults}>No results found</li>
+            <li className={styles.autoSelect__noResults}>
+              {language === 'en' ? 'No results found' : 'Совпадений не найдено'}
+            </li>
           )}
         </ul>
       </div>

@@ -66,6 +66,9 @@
 .autoSelect__searchContent {
   position: relative;
   width: 100%;
+  border: 1px solid var(--border-select);
+  padding: 12px;
+  border-radius: 15px;
 }
 
 .autoSelect__searchContent svg {
@@ -105,7 +108,7 @@
   display: flex;
   justify-content: space-between !important;
   text-align: left;
-  padding: 24px 1rem;
+  padding: 24px;
   cursor: pointer;
   color: var(--ff-color);
   font-weight: 600;

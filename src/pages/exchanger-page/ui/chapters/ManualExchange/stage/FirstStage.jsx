@@ -25,7 +25,6 @@ export const ManualFirstStage = ({ activeStage, exchangeStages, nextStageButton 
     setSelectedDirection(fullDir)
   }
 
-  console.log(theme, 'theme')
   return (
     <>
       {/* ~~~~~~~~~~~~~~~~| Тип обмена |~~~~~~~~~~~~~~~~~~~~ */}
