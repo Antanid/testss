@@ -9,13 +9,26 @@ export const CurrencyExchangeRow = ({
   setCoinsSend,
   commissionRate,
   formatNumber,
+  swapCurrency,
 }) => {
   const initialAmount = coinsData[sendCurrency].multiplier[getCurrency] * coinsSend // Итого до вычета комисси
   const amountCommission = initialAmount - initialAmount * (1 - commissionRate / 100) // Вычет комиссии
   const amountReceived = initialAmount * (1 - commissionRate / 100) // Итого после вычета комиссии
 
   return (
-    <>
+    <div
+      style={{
+        position: 'relative',
+      }}
+    >
+      <button className="exchanger__swap" onClick={swapCurrency}>
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12.1552 21.3798L6.62108 26.914M6.62108 26.914L1.08691 21.3798M6.62108 26.914V1.08789M15.8447 6.62205L21.3788 1.08789M21.3788 1.08789L26.913 6.62205M21.3788 1.08789V26.914"
+            strokeWidth="2"
+          />
+        </svg>
+      </button>
       {[...Array(2)].map((_, index) => {
         return (
           <div
@@ -23,6 +36,9 @@ export const CurrencyExchangeRow = ({
             className={`container_default exchanger__currency ${
               index === 0 ? 'exchanger__currency_send' : 'exchanger__currency_get'
             }`}
+            style={{
+              marginTop: '14px',
+            }}
           >
             {/* Верхний контейнер */}
             <div className="exchanger__currency__row exchanger__currency__top">
@@ -105,6 +121,6 @@ export const CurrencyExchangeRow = ({
           </div>
         )
       })}
-    </>
+    </div>
   )
 }

@@ -76,14 +76,6 @@ export const CryptoToCashless = () => {
   return (
     <>
       <div className="exchanger__exchange">
-        <button className="exchanger__swap" onClick={swapCurrency}>
-          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M12.1552 21.3798L6.62108 26.914M6.62108 26.914L1.08691 21.3798M6.62108 26.914V1.08789M15.8447 6.62205L21.3788 1.08789M21.3788 1.08789L26.913 6.62205M21.3788 1.08789V26.914"
-              strokeWidth="2"
-            />
-          </svg>
-        </button>
         <CurrencyExchangeRow
           sendCurrency={sendCurrency}
           getCurrency={getCurrency}
@@ -91,6 +83,7 @@ export const CryptoToCashless = () => {
           setCoinsSend={setCoinsSend}
           commissionRate={commissionRate}
           formatNumber={formatNumber}
+          swapCurrency={swapCurrency}
         />
 
         <div style={{ marginTop: '1rem' }}>
