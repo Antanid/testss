@@ -1,6 +1,7 @@
 import React from 'react'
 import { InputSendCoins } from '@/pages/exchanger-page/components/Inputs.jsx'
 import { coinsData } from '@/utils/coinsData.jsx'
+import AutoCompleteWithIcon from '@/pages/exchanger-page/components/AutoComplete/AutoCompleteWithIcon.jsx'
 
 export const CurrencyExchangeRow = ({
   sendCurrency,
@@ -14,6 +15,13 @@ export const CurrencyExchangeRow = ({
   const initialAmount = coinsData[sendCurrency].multiplier[getCurrency] * coinsSend // Итого до вычета комисси
   const amountCommission = initialAmount - initialAmount * (1 - commissionRate / 100) // Вычет комиссии
   const amountReceived = initialAmount * (1 - commissionRate / 100) // Итого после вычета комиссии
+
+  const coinOptions = Object.entries(coinsData).map(([key, coin]) => ({
+    id: key,
+    title: coin.id,
+    chain: coin.chain,
+    icon: coin.icon,
+  }))
 
   return (
     <div
@@ -33,7 +41,7 @@ export const CurrencyExchangeRow = ({
         return (
           <div
             key={index}
-            className={`container_default exchanger__currency ${
+            className={`container_manual exchanger__currency ${
               index === 0 ? 'exchanger__currency_send' : 'exchanger__currency_get'
             }`}
             style={{
@@ -63,31 +71,68 @@ export const CurrencyExchangeRow = ({
             </div>
 
             {/* Средний контейнер */}
+
             <div className="exchanger__currency__row exchanger__currency__center">
               {/* Выбор валюты */}
-              <div className="exchanger__coin__select-container">
-                <div className="exchanger__coin__icon-container">
-                  {index === 0
-                    ? coinsData[sendCurrency].icon
-                    : coinsData[getCurrency]?.icon || 'Coin'}
+              <AutoCompleteWithIcon
+                options={coinOptions}
+                onOptionClick={option => {
+                  if (index === 0) {
+                    // setSendCurrency(option.id) — передай этот сеттер через пропсы
+                  } else {
+                    // setGetCurrency(option.id) — тоже передай через пропсы
+                  }
+                }}
+                placeholder="Find coin"
+                headerTitle="Select a coin"
+                value={coinsData[index === 0 ? sendCurrency : getCurrency]}
+                renderOption={option => (
+                  <div className="exchanger__coin__select-container">
+                    <div className="exchanger__coin__icon-container">{option.icon}</div>
+                    <div className="exchanger__coin__info">
+                      <h2 className="text text_h2 text_select-coin">
+                        {option.title}
+                        <svg
+                          className="icon__svg"
+                          viewBox="0 0 11 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M2 2L9 9.5L2 17" strokeWidth="3" />
+                        </svg>
+                      </h2>
+                      <h5 className="text text_h5">{option.chain}</h5>
+                    </div>
+                  </div>
+                )}
+              >
+                <div
+                  className="exchanger__coin__select-container"
+                  onClick={() => console.log('HERE')}
+                >
+                  <div className="exchanger__coin__icon-container">
+                    {index === 0
+                      ? coinsData[sendCurrency].icon
+                      : coinsData[getCurrency]?.icon || 'Coin'}
+                  </div>
+                  <div className="exchanger__coin__info">
+                    <h2 className="text text_h2 text_select-coin">
+                      {index === 0 ? coinsData[sendCurrency].id : coinsData[getCurrency].id}
+                      <svg
+                        className={`icon__svg`}
+                        viewBox="0 0 11 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M2 2L9 9.5L2 17" strokeWidth="3" />
+                      </svg>
+                    </h2>
+                    <h5 className="text text_h5">
+                      {index === 0 ? coinsData[sendCurrency].chain : coinsData[getCurrency].chain}
+                    </h5>
+                  </div>
                 </div>
-                <div className="exchanger__coin__info">
-                  <h2 className="text text_h2 text_select-coin">
-                    {index === 0 ? coinsData[sendCurrency].id : coinsData[getCurrency].id}
-                    <svg
-                      className={`icon__svg`}
-                      viewBox="0 0 11 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M2 2L9 9.5L2 17" strokeWidth="3" />
-                    </svg>
-                  </h2>
-                  <h5 className="text text_h5">
-                    {index === 0 ? coinsData[sendCurrency].chain : coinsData[getCurrency].chain}
-                  </h5>
-                </div>
-              </div>
+              </AutoCompleteWithIcon>
 
               {/* Ввод кол-во отправления */}
               <div className="valutes-container">
