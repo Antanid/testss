@@ -4,6 +4,7 @@ import { coinsData } from '@/utils/coinsData.jsx'
 import SlideModal from '@/pages/exchanger-page/components/Modal/Modal.jsx'
 import AutoCompleteWithIcon from '@/pages/exchanger-page/components/AutoComplete/AutoCompleteWithIcon.jsx'
 import { CoinSelectDisplay } from '@/pages/exchanger-page/ui/chapters/CoinSelectDisplay.jsx'
+import { useLanguage } from '@/shared/lang/index.jsx'
 
 export const CurrencyExchangeRow = ({
   sendCurrency,
@@ -16,6 +17,8 @@ export const CurrencyExchangeRow = ({
   setGetCurrency,
   setSendCurrency,
 }) => {
+  const { language } = useLanguage()
+
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isSendCurrencySelect, setIsSendCurrencySelect] = useState(true)
 
@@ -103,7 +106,15 @@ export const CurrencyExchangeRow = ({
                     }
                   }}
                   placeholder="Find coin"
-                  headerTitle="Select a coin"
+                  headerTitle={
+                    language === 'en'
+                      ? index === 0
+                        ? 'Select a coin to send' // English: Choose coin for sending
+                        : 'Select a coin to receive' // English: Choose coin for receiving
+                      : index === 0
+                        ? 'Выберите валюту для отправки' // Русский: Выберите валюту для отправки
+                        : 'Выберите валюту для получения' // Русский: Выберите валюту для получения
+                  }
                   value={coinsData[index === 0 ? sendCurrency : getCurrency]}
                 >
                   <CoinSelectDisplay
