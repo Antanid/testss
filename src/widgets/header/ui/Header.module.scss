@@ -12,7 +12,7 @@
 header {
   $hdr-h: clamp(4rem, calc(2rem + 4vw), 6rem);
   position: fixed;
-  width: 100%;
+  width: 100vw;
   min-height: $hdr-h;
   height: $hdr-h;
   z-index: 5;
