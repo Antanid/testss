@@ -75,7 +75,9 @@ export const ManualFirstStage = ({
       >
         <div className="manual_exchange_root">
           <p className="text text_h4">
-            {language === 'en' ? 'Select direction' : 'Выберите направление'}
+            {language === 'en'
+              ? 'Select a direction from the list'
+              : 'Выбрать направления из списка'}
           </p>
 
           <div className="manual_exchange_select">

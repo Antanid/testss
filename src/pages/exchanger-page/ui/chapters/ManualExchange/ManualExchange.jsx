@@ -12,6 +12,9 @@ import { CryptoToQr } from '@/pages/exchanger-page/ui/chapters/ManualExchange/se
 import { CashToCrypto } from '@/pages/exchanger-page/ui/chapters/ManualExchange/secondStage/CashToCrypto/CashToCrypto.jsx'
 import { CashTransferWorld } from '@/pages/exchanger-page/ui/chapters/ManualExchange/secondStage/СashTransferWorld/СashTransferWorld.jsx'
 import { CryptoExchangeRisk } from '@/pages/exchanger-page/ui/chapters/ManualExchange/secondStage/CryptoExchangeRisk/CryptoExchangeRisk.jsx'
+import { InternationalPayment } from '@/pages/exchanger-page/ui/chapters/ManualExchange/secondStage/InternationalPayment/InternationalPayment.jsx'
+import { Legalization } from '@/pages/exchanger-page/ui/chapters/ManualExchange/secondStage/Legalization/Legalization.jsx'
+import { OtherPayment } from '@/pages/exchanger-page/ui/chapters/ManualExchange/secondStage/Other/Other.jsx'
 
 export const ManualExchange = ({
   exchangeStages,
@@ -103,13 +106,13 @@ export const ManualExchange = ({
       case DirectionIds.CASH_TRANSFER_WORLDWIDE:
         return <CashTransferWorld />
       case DirectionIds.INTERNATIONAL_PAYMENT:
-        return <div>INTERNATIONAL_PAYMENT</div>
+        return <InternationalPayment />
       case DirectionIds.CRYPTO_EXCHANGE_RISK:
         return <CryptoExchangeRisk />
       case DirectionIds.LEGALIZATION:
-        return <div>LEGALIZATION</div>
+        return <Legalization />
       case DirectionIds.OTHER:
-        return <div>OTHER</div>
+        return <OtherPayment />
     }
   }
 
