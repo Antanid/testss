@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { InputSendCoins } from '@/pages/exchanger-page/components/Inputs.jsx'
 import { coinsData } from '@/utils/coinsData.jsx'
-import SlideModal from '@/pages/exchanger-page/components/Modal/Modal.jsx'
+
 import AutoCompleteWithIcon from '@/pages/exchanger-page/components/AutoComplete/AutoCompleteWithIcon.jsx'
 import { CoinSelectDisplay } from '@/pages/exchanger-page/ui/chapters/CoinSelectDisplay.jsx'
 import { useLanguage } from '@/shared/lang/index.jsx'
@@ -19,9 +19,6 @@ export const CurrencyExchangeRow = ({
 }) => {
   const { language } = useLanguage()
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isSendCurrencySelect, setIsSendCurrencySelect] = useState(true)
-
   const initialAmount = coinsData[sendCurrency].multiplier[getCurrency] * coinsSend // Итого до вычета комисси
   const amountCommission = initialAmount - initialAmount * (1 - commissionRate / 100) // Вычет комиссии
   const amountReceived = initialAmount * (1 - commissionRate / 100) // Итого после вычета комиссии
@@ -33,19 +30,6 @@ export const CurrencyExchangeRow = ({
     icon: coin.icon,
   }))
 
-  const handleCoinSelectClick = isSendCurrency => {
-    setIsSendCurrencySelect(isSendCurrency)
-  }
-
-  const handleCurrencySelect = selectedId => {
-    if (isSendCurrencySelect) {
-      setSendCurrency(selectedId)
-    } else {
-      setGetCurrency(selectedId)
-    }
-    setIsModalOpen(false)
-  }
-
   return (
     <>
       <div
@@ -53,7 +37,11 @@ export const CurrencyExchangeRow = ({
           position: 'relative',
         }}
       >
-        <button className="exchanger__swap" onClick={swapCurrency}>
+        <button
+          className="exchanger__swap"
+          onClick={swapCurrency}
+          aria-label={language === 'en' ? 'Swap currencies' : 'Поменять валюты'}
+        >
           <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12.1552 21.3798L6.62108 26.914M6.62108 26.914L1.08691 21.3798M6.62108 26.914V1.08789M15.8447 6.62205L21.3788 1.08789M21.3788 1.08789L26.913 6.62205M21.3788 1.08789V26.914"
@@ -76,19 +64,28 @@ export const CurrencyExchangeRow = ({
               <div className="exchanger__currency__row exchanger__currency__top">
                 {index === 0 ? (
                   <>
-                    <h4 className="text text_h4">Send</h4>
+                    <h4 className="text text_h4">{language === 'en' ? 'Send' : 'Отправить'}</h4>
                     {coinsSend < coinsData[sendCurrency].min && (
-                      <h4 className="text text_h4 text_error">Min {coinsData[sendCurrency].min}</h4>
+                      <h4 className="text text_h4 text_error">
+                        {language === 'en'
+                          ? `Min ${coinsData[sendCurrency].min}`
+                          : `Минимум ${coinsData[sendCurrency].min}`}
+                      </h4>
                     )}
                     {coinsSend > coinsData[sendCurrency].max && (
-                      <h4 className="text text_h4 text_error">Max {coinsData[sendCurrency].max}</h4>
+                      <h4 className="text text_h4 text_error">
+                        {language === 'en'
+                          ? `Max ${coinsData[sendCurrency].max}`
+                          : `Максимум ${coinsData[sendCurrency].max}`}
+                      </h4>
                     )}
                   </>
                 ) : (
                   <>
-                    <h4 className="text text_h4">Get</h4>
+                    <h4 className="text text_h4">{language === 'en' ? 'Get' : 'Получить'}</h4>
                     <h5 className="text text_h5 text_commission">
-                      ~ {formatNumber(amountCommission.toFixed(1)) || 0}$ ({commissionRate}%)
+                      ~ {formatNumber(amountCommission.toFixed(1)) || 0}$ ({commissionRate}%{' '}
+                      {language === 'en' ? 'commission' : 'комиссии'})
                     </h5>
                   </>
                 )}
@@ -105,15 +102,15 @@ export const CurrencyExchangeRow = ({
                       setGetCurrency(option.id)
                     }
                   }}
-                  placeholder="Find coin"
+                  placeholder={language === 'en' ? 'Find coin' : 'Найти валюту'}
                   headerTitle={
                     language === 'en'
                       ? index === 0
-                        ? 'Select a coin to send' // English: Choose coin for sending
-                        : 'Select a coin to receive' // English: Choose coin for receiving
+                        ? 'Select a coin to send'
+                        : 'Select a coin to receive'
                       : index === 0
-                        ? 'Выберите валюту для отправки' // Русский: Выберите валюту для отправки
-                        : 'Выберите валюту для получения' // Русский: Выберите валюту для получения
+                        ? 'Выберите валюту для отправки'
+                        : 'Выберите валюту для получения'
                   }
                   value={coinsData[index === 0 ? sendCurrency : getCurrency]}
                 >
@@ -122,7 +119,6 @@ export const CurrencyExchangeRow = ({
                     sendCurrency={sendCurrency}
                     getCurrency={getCurrency}
                     coinsData={coinsData}
-                    onClick={() => handleCoinSelectClick(index === 0)}
                   />
                 </AutoCompleteWithIcon>
 
@@ -145,8 +141,8 @@ export const CurrencyExchangeRow = ({
               <div className="exchanger__currency__row exchanger__currency__bottom">
                 <h5 className="text text_h5 text_chain">
                   {index === 0
-                    ? `${coinsData[sendCurrency].chain} chain`
-                    : `${coinsData[getCurrency].chain} chain`}
+                    ? `${coinsData[sendCurrency].chain} ${language === 'en' ? 'chain' : 'цепочка'}`
+                    : `${coinsData[getCurrency].chain} ${language === 'en' ? 'chain' : 'цепочка'}`}
                 </h5>
 
                 <h5 className="text text_h5 text_convert">
@@ -159,15 +155,6 @@ export const CurrencyExchangeRow = ({
           )
         })}
       </div>
-      <SlideModal
-        isOpen={isModalOpen}
-        onOpenChange={setIsModalOpen}
-        options={coinOptions}
-        onSelect={handleCurrencySelect}
-        title={isSendCurrencySelect ? 'Select Send Currency' : 'Select Get Currency'}
-        placeholder="Find coin"
-        position="bottom"
-      />
     </>
   )
 }
