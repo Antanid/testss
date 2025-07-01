@@ -15,6 +15,7 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@heroui/modal": "^2.2.19",
+    "@radix-ui/react-dialog": "^1.1.14",
     "@svgr/core": "^8.1.0",
     "lucide-react": "^0.510.0",
     "phosphor-react": "^1.4.1",
