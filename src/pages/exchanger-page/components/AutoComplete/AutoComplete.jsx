@@ -92,7 +92,7 @@ const AutocompleteSelect = ({
               filteredOptions.map(option => {
                 const isSelected = value?.id === option.id
                 return (
-                  <li
+                  <div
                     key={option.id}
                     className={styles.autoSelect__item}
                     onClick={() => handleSelect(option)}
@@ -115,11 +115,12 @@ const AutocompleteSelect = ({
                           background: '#8947FF',
                           marginLeft: 'auto',
                         }}
+                        className={styles.check}
                       >
                         <Check size={16} color="#fff" />
                       </div>
                     )}
-                  </li>
+                  </div>
                 )
               })
             ) : (

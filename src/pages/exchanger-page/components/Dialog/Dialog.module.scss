@@ -1,5 +1,7 @@
 @import '@/shared/styles/variables.scss'; // если есть переменные
 
+/* ------------------- Overlay ------------------- */
+
 .overlay {
   position: fixed;
   inset: 0; // top:0; right:0; bottom:0; left:0;
@@ -10,51 +12,67 @@
 
 .overlayDimmed {
   position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 999;
+
+  &[data-state='open'] {
+    animation: overlayShow 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  &[data-state='closed'] {
+    animation: overlayHide 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
 }
 
+/* ------------------- Content ------------------- */
 
 .content {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  /* Убираем фиксированную высоту */
-  height: auto;          /* или просто убрать height */
-  max-height: 80vh;      /* ограничиваем максимум по высоте */
+  max-height: 80vh;
   min-height: 450px;
-    box-sizing: border-box; /* чтобы padding не влиял на общую ширину */
-  overflow-y: hidden;      /* скролл внутри, если контент слишком большой */
+  box-sizing: border-box;
+  overflow-y: hidden;
   background-color: var(--bg-color);
   border: 1px solid var(--border-select);
   z-index: 9999;
   border-radius: 20px;
-
   width: 95%;
   max-width: 600px;
 
-  &.padding {
-    padding: 32px;
+  &[data-state='open'] {
+    animation: contentShow 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  &[data-state='closed'] {
+    animation: contentHide 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  &.bottom {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 20px 20px 0 0;
+    max-height: 80vh;
+    width: 100%;
+    max-width: 600px;
+
+    &[data-state='open'] {
+      animation: slideUp 300ms ease forwards;
+    }
+
+    &[data-state='closed'] {
+      animation: slideDown 200ms ease forwards;
+    }
   }
 }
 
-.bottom {
-  top: auto;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  border-radius: 20px 20px 0 0;
-  max-height: 80vh;
-  width: 100%;
-  max-width: 600px;
+/* ------------------- Sizes ------------------- */
 
-  animation: slideUp 0.3s ease forwards;
-}
-
-
-/* Размеры (пример, можно добавить больше) */
 .md {
   max-width: 600px;
 }
@@ -67,13 +85,23 @@
   max-width: 900px;
 }
 
-/* Анимации */
+/* ------------------- Animations ------------------- */
+
 @keyframes overlayShow {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes overlayHide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
@@ -88,3 +116,35 @@
   }
 }
 
+@keyframes contentHide {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+}
