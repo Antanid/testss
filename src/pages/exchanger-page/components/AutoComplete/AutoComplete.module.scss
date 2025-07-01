@@ -1,104 +1,169 @@
 @use '@/shared/styles/variables.scss' as *;
 
-.dropdownWrapper {
+.autoSelect__wrapper {
   position: relative;
   user-select: none;
   width: 100%;
 }
 
-.dropdownMenu {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  background-color: var(--bg-color);
+.autoSelect__menu {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  z-index: 1000 !important;
-  max-height: 300px;
+  background-color: var(--bg-color);
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
   flex-direction: column;
-  overflow-y: auto;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 1000;
 }
 
-.dropdownMenuOpen {
+.autoSelect__menuOpen {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
   margin-top: 10px;
 }
 
-
-.dropdown_header{
-  background: #8947FF;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  display: flex;
-  width: 100%;
-  height: 78px;
+.autoSelect__header {
   position: sticky;
-}
-.dropdown_header_content{
-  padding: 24px;
+  top: 0;
+  z-index: 10;
+  background: #8947FF;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 78px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.autoSelect__headerContent {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.dropdownMenu ul {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+.autoSelect__searchWrapper {
+  position: sticky;
+  top: 78px;
+  background: var(--bg-color);
+  z-index: 9;
+  padding: 8px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
-.dropdownMenu li {
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  color: var(--ff-color);
-  font-weight: 600;
-  border-bottom: 1px solid var(--line-color);
-  transition: background-color 0.2s ease;
-}
-
-.searchWrapper {
+.autoSelect__searchContent {
   position: relative;
   width: 100%;
-
 }
 
-.searchWrapperContent{
-  border: 1px solid black;
-  margin: 20px;
-  padding: 12px;
-  border-radius: 15px;
-  border: 1px solid var(--border-select);
-}
-
-.searchWrapper svg {
+.autoSelect__searchContent svg {
   position: absolute;
-  right: 36px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
   color: var(--ff-color);
 }
 
-.searchInput {
+.autoSelect__input {
   width: 100%;
-  padding: 0.5rem 2.5rem 0.5rem 0.5rem; /* справа большой отступ под иконку */
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
   border: none;
   outline: none;
   background: transparent;
   color: var(--ff-color);
   font-size: 1rem;
   box-sizing: border-box;
+}
+
+.autoSelect__list {
+  margin: 0;
+  list-style: none;
+  overflow-y: auto;
+  flex-grow: 1;
+  width: 100%;
+  max-height: calc(300px - 78px - 48px);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.autoSelect__item {
+  display: flex;
+  justify-content: space-between !important;
+  text-align: left;
+  padding: 24px 1rem;
+  cursor: pointer;
+  color: var(--ff-color);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line-color);
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+    span {
+      transition: $defl-transit;
+      margin-left: 0.5rem;
+    }
+    font-size: 0.95rem;
+    text-decoration: none;
+    text-wrap: nowrap;
+    color: var(--ff-color);
+    font-weight: 600;
+    transition: $defl-transit;
+    @include flex-row;
+    height: 90%;
+    display: flex;
+    border-bottom: 1px solid var(--line-color);
+    svg {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+
+
+  &:nth-child(4) {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+    padding: 24px 1rem;
+    span {
+      transition: $defl-transit;
+      margin-left: 0.5rem;
+    }
+    div {
+      @include flex-row;
+      width: 16px !important;
+      max-width: 16px !important;
+      min-width: 16px;
+      svg {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+  }
+}
+
+.autoSelect__item:hover {
+  transform: translateX(10px);
+}
+
+.autoSelect__noResults {
+  padding: 0.75rem 1rem;
+  color: var(--ff-muted-color);
+  font-style: italic;
 }
