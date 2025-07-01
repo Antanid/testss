@@ -28,7 +28,7 @@ const SlideModal = ({
   }
 
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton shadow="none" isDismissable>
       <ModalContent
         style={{
           borderTopLeftRadius: isBottom ? '16px' : 0,
@@ -39,7 +39,7 @@ const SlideModal = ({
           width: '100%',
           height: '60vh',
           overflowY: 'auto',
-          zIndex: 10,
+          zIndex: 20,
           margin: 0,
           ...(isBottom
             ? {
@@ -53,9 +53,8 @@ const SlideModal = ({
                 animation: isOpen ? 'slideDown 300ms cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
               }),
         }}
-        className={styles.modal_content}
       >
-        <ModalBody>
+        <ModalBody className={styles.modal_content}>
           <div
             className={styles.autoSelect__menu}
             style={{
