@@ -70,6 +70,11 @@ export const CashToCrypto = () => {
         />
 
         <div style={{ marginTop: '1rem' }}>
+          <p className="text text_h4">
+            {language === 'en'
+              ? 'Select a city to receive from the list'
+              : 'Выбери город пополнения безналичного счета'}
+          </p>
           <AutocompleteSelect
             options={cityOptions}
             onOptionClick={handleCityClick}
@@ -77,19 +82,11 @@ export const CashToCrypto = () => {
             placeholder={language === 'en' ? 'Find a city' : 'Найти город'}
             value={selectedCity}
           >
-            <div className="manual_exchange_root">
-              <p className="text text_h4">
-                {language === 'en'
-                  ? 'Select a city to receive from the list'
-                  : 'Выбери город пополнения безналичного счета'}
+            <div className="manual_exchange_select">
+              <p className="text text_h3">
+                {language === 'en' ? selectedCity.en : selectedCity.ru}
               </p>
-
-              <div className="manual_exchange_select">
-                <p className="text text_h3">
-                  {language === 'en' ? selectedCity.en : selectedCity.ru}
-                </p>
-                <CaretRight size={24} color={theme === 'dark' ? '#fff' : '#000'} />
-              </div>
+              <CaretRight size={24} color={theme === 'dark' ? '#fff' : '#000'} />
             </div>
           </AutocompleteSelect>
 

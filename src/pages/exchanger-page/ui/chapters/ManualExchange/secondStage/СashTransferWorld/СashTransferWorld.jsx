@@ -81,6 +81,11 @@ export const CashTransferWorld = () => {
         />
 
         <div style={{ marginTop: '1rem' }}>
+          <p className="text text_h4">
+            {language === 'en'
+              ? 'Select the city where you will give cash'
+              : 'Выбери город, в котором отдашь наличные'}
+          </p>
           <AutocompleteSelect
             options={cityOptions}
             onOptionClick={handleCityFromClick}
@@ -88,23 +93,20 @@ export const CashTransferWorld = () => {
             placeholder={language === 'en' ? 'Find a city' : 'Найти город'}
             value={selectedCityFrom}
           >
-            <div className="manual_exchange_root">
-              <p className="text text_h4">
-                {language === 'en'
-                  ? 'Select the city where you will give cash'
-                  : 'Выбери город, в котором отдашь наличные'}
+            <div className="manual_exchange_select">
+              <p className="text text_h3">
+                {language === 'en' ? selectedCityFrom.en : selectedCityFrom.ru}
               </p>
-
-              <div className="manual_exchange_select">
-                <p className="text text_h3">
-                  {language === 'en' ? selectedCityFrom.en : selectedCityFrom.ru}
-                </p>
-                <CaretRight size={24} color={theme === 'dark' ? '#fff' : '#000'} />
-              </div>
+              <CaretRight size={24} color={theme === 'dark' ? '#fff' : '#000'} />
             </div>
           </AutocompleteSelect>
 
           <div style={{ marginTop: '1rem' }}>
+            <p className="text text_h4">
+              {language === 'en'
+                ? 'Select the city where you will receive cash'
+                : 'Выбери город, в котором получишь наличные'}
+            </p>
             <AutocompleteSelect
               options={cityOptions}
               onOptionClick={handleCityToClick}
@@ -112,19 +114,11 @@ export const CashTransferWorld = () => {
               placeholder={language === 'en' ? 'Find a city' : 'Найти город'}
               value={selectedCityTo}
             >
-              <div className="manual_exchange_root">
-                <p className="text text_h4">
-                  {language === 'en'
-                    ? 'Select the city where you will receive cash'
-                    : 'Выбери город, в котором получишь наличные'}
+              <div className="manual_exchange_select">
+                <p className="text text_h3">
+                  {language === 'en' ? selectedCityTo.en : selectedCityTo.ru}
                 </p>
-
-                <div className="manual_exchange_select">
-                  <p className="text text_h3">
-                    {language === 'en' ? selectedCityTo.en : selectedCityTo.ru}
-                  </p>
-                  <CaretRight size={24} color={theme === 'dark' ? '#fff' : '#000'} />
-                </div>
+                <CaretRight size={24} color={theme === 'dark' ? '#fff' : '#000'} />
               </div>
             </AutocompleteSelect>
           </div>

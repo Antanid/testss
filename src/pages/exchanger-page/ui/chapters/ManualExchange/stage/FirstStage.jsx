@@ -66,28 +66,35 @@ export const ManualFirstStage = ({
         </div>
       </div>
 
-      <AutocompleteSelect
-        options={options}
-        onOptionClick={handleOptionClick}
-        headerTitle={language === 'en' ? 'Find a direction' : 'Выбрать направление'}
-        placeholder={language === 'en' ? 'Find a direction' : 'Найти направление'}
-        value={selectedDirection}
+      <div
+        style={{
+          width: '100%',
+        }}
       >
-        <div className="manual_exchange_root">
-          <p className="text text_h4">
-            {language === 'en'
-              ? 'Select a direction from the list'
-              : 'Выбрать направления из списка'}
-          </p>
+        <p
+          className="text text_h4"
+          style={{
+            marginTop: 20,
+          }}
+        >
+          {language === 'en' ? 'Select a direction from the list' : 'Выбрать направления из списка'}
+        </p>
 
+        <AutocompleteSelect
+          options={options}
+          onOptionClick={handleOptionClick}
+          headerTitle={language === 'en' ? 'Find a direction' : 'Выбрать направление'}
+          placeholder={language === 'en' ? 'Find a direction' : 'Найти направление'}
+          value={selectedDirection}
+        >
           <div className="manual_exchange_select">
             <p className="text text_h3">
               {language === 'en' ? selectedDirection.en : selectedDirection.ru}
             </p>
             <CaretRight size={24} color={theme === 'dark' ? '#fff' : '#000'} />
           </div>
-        </div>
-      </AutocompleteSelect>
+        </AutocompleteSelect>
+      </div>
 
       {/* ~~~~~~~~~~~~~~~| Следующий этап |~~~~~~~~~~~~~~~~~~ */}
 

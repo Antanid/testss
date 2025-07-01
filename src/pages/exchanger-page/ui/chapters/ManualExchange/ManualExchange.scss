@@ -1,17 +1,13 @@
 @use '@/shared/styles/variables.scss' as *;
 
-.manual_exchange_root {
-  width: 100%;
-}
-
 .manual_exchange_select {
+  margin-top: 14px;
   cursor: pointer;
   background: var(--bg-select-exchange);
   padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
   border-radius: 15px;
   border: 1px solid var(--border-select);
 }
