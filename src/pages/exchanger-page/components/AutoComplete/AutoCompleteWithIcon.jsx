@@ -1,53 +1,70 @@
-import React, { useState, useEffect, useRef } from 'react'
-import styles from './AutoComplete.module.scss'
-import { MagnifyingGlass, X, Check } from 'phosphor-react'
-import { useLanguage } from '@/shared/lang/index.jsx'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
+import { Check, MagnifyingGlass, X } from 'phosphor-react'
+import styles from './Modal.module.scss'
+import { DialogCommon } from '@/pages/exchanger-page/components/Dialog/Dialog.jsx'
 
 const AutoCompleteWithIcon = ({
-  children,
   options = [],
-  onOptionClick = () => {},
-  placeholder,
-  headerTitle,
+  onOptionClick,
+  headerTitle = 'Select',
+  placeholder = '',
   value = null,
+  children,
 }) => {
-  const { language } = useLanguage()
-
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState('')
-  const containerRef = useRef(null)
+
+  const filteredOptions = useMemo(() => {
+    const s = search.trim().toLowerCase()
+    if (!s) return options
+
+    return options.filter(option => {
+      return (
+        option.title.toLowerCase().includes(s) ||
+        option.chain.toLowerCase().includes(s) ||
+        option.id.toLowerCase().includes(s)
+      )
+    })
+  }, [search, options])
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
-        setIsOpen(false)
-        setSearch('')
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
-
-  const handleTriggerClick = e => {
-    e.stopPropagation()
-    setIsOpen(open => !open)
     if (!isOpen) setSearch('')
+  }, [isOpen])
+
+  const handleSelect = option => {
+    onOptionClick(option)
+    setIsOpen(false)
+    setSearch('')
   }
 
-  const filteredOptions = options.filter(option =>
-    option.title.toLowerCase().includes(search.toLowerCase()),
-  )
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus()
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   return (
-    <div className={styles.autoSelect__wrapper} ref={containerRef}>
-      <div onClick={handleTriggerClick} style={{ width: '100%' }}>
-        {children}
-      </div>
-      <div style={{ position: 'relative' }}>
-        <div className={`${styles.autoSelect__menu} ${isOpen ? styles.autoSelect__menuOpen : ''}`}>
+    <>
+      <DialogCommon
+        isOpen={isOpen}
+        onChange={setIsOpen}
+        trigger={<div style={{ cursor: 'pointer' }}>{children}</div>}
+        contentClassNames={styles.modal_content}
+        disablePadding={true}
+        size="md"
+      >
+        <div className={styles.autoSelect__menu}>
           <div className={styles.autoSelect__header}>
             <div className={styles.autoSelect__headerContent}>
-              <p className="text" style={{ fontWeight: 700, color: 'white', fontSize: '20px' }}>
+              <p className="text" style={{ fontWeight: 700, color: 'white', fontSize: 20 }}>
                 {headerTitle}
               </p>
               <X
@@ -69,6 +86,8 @@ const AutoCompleteWithIcon = ({
                 placeholder={placeholder}
                 className={styles.autoSelect__input}
                 onClick={e => e.stopPropagation()}
+                ref={inputRef}
+                autoFocus={false}
               />
             </div>
           </div>
@@ -76,54 +95,57 @@ const AutoCompleteWithIcon = ({
           <ul className={styles.autoSelect__list}>
             {filteredOptions.length > 0 ? (
               filteredOptions.map(option => {
-                const isSelected = value?.id === option.id
+                const isSelected = value?.id?.toLowerCase() === option.id.toLowerCase()
 
                 return (
-                  <li
+                  <div
                     key={option.id}
                     className={styles.autoSelect__item}
-                    onClick={() => {
-                      onOptionClick(option)
-                      setIsOpen(false)
-                      setSearch('')
-                    }}
+                    onClick={() => handleSelect(option)}
                     tabIndex={0}
                     onKeyDown={e => {
                       if (e.key === 'Enter' || e.key === ' ') {
-                        onOptionClick(option)
-                        setIsOpen(false)
-                        setSearch('')
+                        handleSelect(option)
                       }
                     }}
                   >
-                    {option.title}
-
-                    {isSelected && (
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          borderRadius: '100%',
-                          padding: '4px',
-                          background: '#8947FF',
-                        }}
-                      >
-                        <Check size={16} color="#fff" />
+                    <div
+                      className="exchanger__coin__select-container"
+                      style={{
+                        width: '100%',
+                      }}
+                    >
+                      <div className="exchanger__coin__icon-container">{option.icon}</div>
+                      <div className="exchanger__coin__info">
+                        <h2 className="text text_h2 text_select-coin">{option.title}</h2>
+                        <h5 className="text text_h5">{option.chain}</h5>
                       </div>
-                    )}
-                  </li>
+                      {isSelected && (
+                        <div
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: '100%',
+                            padding: '4px',
+                            background: '#8947FF',
+                            marginLeft: 'auto',
+                          }}
+                        >
+                          <Check size={16} color="#fff" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 )
               })
             ) : (
-              <li className={styles.autoSelect__noResults}>
-                {language === 'en' ? 'No results found' : 'Совпадений не найдено'}
-              </li>
+              <li className={styles.autoSelect__noResults}>Совпадений не найдено</li>
             )}
           </ul>
         </div>
-      </div>
-    </div>
+      </DialogCommon>
+    </>
   )
 }
 

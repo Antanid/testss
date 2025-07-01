@@ -21,13 +21,12 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
   /* Убираем фиксированную высоту */
   height: auto;          /* или просто убрать height */
   max-height: 80vh;      /* ограничиваем максимум по высоте */
   min-height: 450px;
-
-  overflow-y: auto;      /* скролл внутри, если контент слишком большой */
+    box-sizing: border-box; /* чтобы padding не влиял на общую ширину */
+  overflow-y: hidden;      /* скролл внутри, если контент слишком большой */
   background-color: var(--bg-color);
   border: 1px solid var(--border-select);
   z-index: 9999;

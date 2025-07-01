@@ -122,29 +122,43 @@
     opacity: 1 !important;
     transform: none !important;
   }
-
-  &:nth-child(4) {
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-    width: 100%;
-    padding: 24px 1rem;
-    span {
-      transition: $defl-transit;
-      margin-left: 0.5rem;
-    }
-    div {
-      @include flex-row;
-      width: 16px !important;
-      max-width: 16px !important;
-      min-width: 16px;
-      svg {
-        opacity: 1 !important;
-        transform: none !important;
-      }
+  .exchanger__coin {
+    &__icon-container{
+      outline: none !important;
     }
   }
 }
+
+.autoSelect__item:nth-child(4) {
+  display: flex;
+  justify-content: space-between !important;
+  width: 100%;
+  padding: 24px;
+  /* flex-direction: column !important; <-- убрать это */
+  flex-direction: row !important;
+  align-items: center;
+
+  svg {
+    $size: clmp(3rem, 4.6rem);
+    width: $size;
+    min-width: $size;
+  }
+  span {
+    transition: $defl-transit;
+    margin-left: 0.5rem;
+  }
+  div {
+    width: auto !important; /* или 100%, если нужно */
+    display: flex;
+
+
+    svg {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
 
 .autoSelect__item:hover {
   transform: translateX(10px);

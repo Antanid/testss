@@ -18,15 +18,6 @@ export const CurrencyExchangeRow = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isSendCurrencySelect, setIsSendCurrencySelect] = useState(true)
-  const [isLargeScreen, setIsLargeScreen] = React.useState(window.innerWidth >= 768)
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 768)
-    }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
 
   const initialAmount = coinsData[sendCurrency].multiplier[getCurrency] * coinsSend // Итого до вычета комисси
   const amountCommission = initialAmount - initialAmount * (1 - commissionRate / 100) // Вычет комиссии
@@ -40,13 +31,7 @@ export const CurrencyExchangeRow = ({
   }))
 
   const handleCoinSelectClick = isSendCurrency => {
-    if (isLargeScreen) {
-      setIsSendCurrencySelect(isSendCurrency)
-      console.log('Screen width more than 768px', isSendCurrency ? 'Send currency' : 'Get currency')
-    } else {
-      setIsSendCurrencySelect(isSendCurrency)
-      setIsModalOpen(true)
-    }
+    setIsSendCurrencySelect(isSendCurrency)
   }
 
   const handleCurrencySelect = selectedId => {
@@ -108,48 +93,19 @@ export const CurrencyExchangeRow = ({
 
               {/* Средний контейнер */}
               <div className="exchanger__currency__row exchanger__currency__center">
-                {isLargeScreen ? (
-                  <AutoCompleteWithIcon
-                    options={coinOptions}
-                    onOptionClick={option => {
-                      if (index === 0) {
-                        setSendCurrency(option.id)
-                      } else {
-                        setGetCurrency(option.id)
-                      }
-                    }}
-                    placeholder="Find coin"
-                    headerTitle="Select a coin"
-                    value={coinsData[index === 0 ? sendCurrency : getCurrency]}
-                    renderOption={option => (
-                      <div className="exchanger__coin__select-container">
-                        <div className="exchanger__coin__icon-container">{option.icon}</div>
-                        <div className="exchanger__coin__info">
-                          <h2 className="text text_h2 text_select-coin">
-                            {option.title}
-                            <svg
-                              className="icon__svg"
-                              viewBox="0 0 11 19"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M2 2L9 9.5L2 17" strokeWidth="3" />
-                            </svg>
-                          </h2>
-                          <h5 className="text text_h5">{option.chain}</h5>
-                        </div>
-                      </div>
-                    )}
-                  >
-                    <CoinSelectDisplay
-                      isSend={index === 0}
-                      sendCurrency={sendCurrency}
-                      getCurrency={getCurrency}
-                      coinsData={coinsData}
-                      onClick={() => handleCoinSelectClick(index === 0)}
-                    />
-                  </AutoCompleteWithIcon>
-                ) : (
+                <AutoCompleteWithIcon
+                  options={coinOptions}
+                  onOptionClick={option => {
+                    if (index === 0) {
+                      setSendCurrency(option.id)
+                    } else {
+                      setGetCurrency(option.id)
+                    }
+                  }}
+                  placeholder="Find coin"
+                  headerTitle="Select a coin"
+                  value={coinsData[index === 0 ? sendCurrency : getCurrency]}
+                >
                   <CoinSelectDisplay
                     isSend={index === 0}
                     sendCurrency={sendCurrency}
@@ -157,7 +113,7 @@ export const CurrencyExchangeRow = ({
                     coinsData={coinsData}
                     onClick={() => handleCoinSelectClick(index === 0)}
                   />
-                )}
+                </AutoCompleteWithIcon>
 
                 {/* Ввод кол-во отправления */}
                 <div className="valutes-container">
