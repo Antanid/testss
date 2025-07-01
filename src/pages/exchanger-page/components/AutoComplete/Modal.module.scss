@@ -3,7 +3,6 @@
 .modal_content{
   background-color: var(--bg-color);
   width: 100%;
-  height: 100%;
 }
 
 .autoSelect__wrapper {
@@ -13,11 +12,9 @@
 }
 
 .autoSelect__menu {
-  width: 100%;
-  background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
-  height: 100%;           // важна высота для flex
+  height: 100%;
   pointer-events: all;
   transform: translateY(0);
 }
@@ -27,14 +24,14 @@
   top: 0;
   z-index: 10;
   background: #8947FF;
-border-radius: 16px;
+  border-radius: 16px 16px 0 0;
   height: 78px;
   padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
+
 .autoSelect__headerContent {
   width: 100%;
   display: flex;
@@ -44,14 +41,13 @@ border-radius: 16px;
 
 .autoSelect__searchWrapper {
   position: sticky;
-  top: 100px;
+  top: 78px; // под header
   background: var(--bg-color);
   z-index: 9;
   padding: 8px 24px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  margin: 14px 0;
 }
 
 
@@ -86,15 +82,16 @@ border-radius: 16px;
 .autoSelect__list {
   margin: 0;
   list-style: none;
-  overflow-y: auto;      // скролл именно здесь
+  overflow-y: auto;      // прокрутка здесь
   flex-grow: 1;          // занимает оставшееся пространство
   width: 100%;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  max-height: none;
+  max-height: 300px;
 }
+
 .autoSelect__item {
   display: flex;
   justify-content: space-between !important;
@@ -104,9 +101,11 @@ border-radius: 16px;
   color: var(--ff-color);
   font-weight: 600;
   border-bottom: 1px solid var(--line-color);
+  transition: background-color 0.2s ease;
   box-sizing: border-box;
   width: 100%;
   span {
+    transition: $defl-transit;
     margin-left: 0.5rem;
   }
   font-size: 0.95rem;
@@ -114,6 +113,7 @@ border-radius: 16px;
   text-wrap: nowrap;
   color: var(--ff-color);
   font-weight: 600;
+  transition: $defl-transit;
   @include flex-row;
   height: 90%;
   display: flex;
@@ -123,14 +123,12 @@ border-radius: 16px;
     transform: none !important;
   }
 
-
-
   &:nth-child(4) {
     display: flex;
     justify-content: space-between;
     text-align: left;
     width: 100%;
-    padding: 24px;
+    padding: 24px 1rem;
     span {
       transition: $defl-transit;
       margin-left: 0.5rem;
@@ -145,7 +143,6 @@ border-radius: 16px;
         transform: none !important;
       }
     }
-
   }
 }
 

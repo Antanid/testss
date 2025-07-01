@@ -107,7 +107,6 @@ export const CurrencyExchangeRow = ({
               </div>
 
               {/* Средний контейнер */}
-
               <div className="exchanger__currency__row exchanger__currency__center">
                 {isLargeScreen ? (
                   <AutoCompleteWithIcon
