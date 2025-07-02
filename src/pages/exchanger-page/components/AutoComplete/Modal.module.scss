@@ -91,10 +91,10 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  min-height: 0;
   flex: 1 1 auto;
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 40vh;
+
 }
 
 .autoSelect__item {
