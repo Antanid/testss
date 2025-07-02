@@ -99,6 +99,7 @@
 
 .autoSelect__item {
   display: flex;
+  text-wrap: wrap;
   justify-content: space-between !important;
   text-align: left;
   padding: 24px;
@@ -115,7 +116,6 @@
   }
   font-size: 0.95rem;
   text-decoration: none;
-  text-wrap: nowrap;
   color: var(--ff-color);
   font-weight: 600;
   transition: $defl-transit;
