@@ -18,12 +18,7 @@ export const DialogCommon = ({
 
         <Dialog.Content
           onOpenAutoFocus={event => event.preventDefault()}
-          className={[
-            styles.content,
-            styles[size],
-            styles[position], // добавляем класс позиции
-            contentClassNames || '',
-          ]
+          className={[styles.content, styles[size], styles[position], contentClassNames || '']
             .filter(Boolean)
             .join(' ')}
         >

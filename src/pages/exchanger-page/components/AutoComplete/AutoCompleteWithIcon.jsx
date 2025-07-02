@@ -78,7 +78,13 @@ const AutoCompleteWithIcon = ({
           </div>
 
           <div className={styles.autoSelect__searchWrapper}>
-            <div className={styles.autoSelect__searchContent}>
+            <div
+              className={styles.autoSelect__searchContent}
+              style={{
+                marginTop: 8,
+                marginBottom: 8,
+              }}
+            >
               <MagnifyingGlass size={24} />
               <input
                 type="text"
@@ -89,6 +95,9 @@ const AutoCompleteWithIcon = ({
                 onClick={e => e.stopPropagation()}
                 ref={inputRef}
                 autoFocus={false}
+                style={{
+                  fontSize: 16,
+                }}
               />
             </div>
           </div>
@@ -118,8 +127,22 @@ const AutoCompleteWithIcon = ({
                     >
                       <div className="exchanger__coin__icon-container">{option.icon}</div>
                       <div className="exchanger__coin__info">
-                        <h2 className="text text_h2 text_select-coin">{option.title}</h2>
-                        <h5 className="text text_h5">{option.chain}</h5>
+                        <h2
+                          className="text text_h2 text_select-coin"
+                          style={{
+                            fontSize: 25,
+                          }}
+                        >
+                          {option.title}
+                        </h2>
+                        <h5
+                          className="text text_h5"
+                          style={{
+                            fontSize: 14,
+                          }}
+                        >
+                          {option.chain}
+                        </h5>
                       </div>
                       {isSelected && (
                         <div

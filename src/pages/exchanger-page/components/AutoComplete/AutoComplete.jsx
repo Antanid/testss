@@ -72,7 +72,13 @@ const AutocompleteSelect = ({
           </div>
 
           <div className={styles.autoSelect__searchWrapper}>
-            <div className={styles.autoSelect__searchContent}>
+            <div
+              className={styles.autoSelect__searchContent}
+              style={{
+                marginTop: 8,
+                marginBottom: 8,
+              }}
+            >
               <MagnifyingGlass size={24} />
               <input
                 type="text"
@@ -83,6 +89,9 @@ const AutocompleteSelect = ({
                 onClick={e => e.stopPropagation()}
                 ref={inputRef}
                 autoFocus={false}
+                style={{
+                  fontSize: 16,
+                }}
               />
             </div>
           </div>
@@ -101,6 +110,9 @@ const AutocompleteSelect = ({
                       if (e.key === 'Enter' || e.key === ' ') {
                         handleSelect(option)
                       }
+                    }}
+                    style={{
+                      fontSize: 22,
                     }}
                   >
                     {option.title}
