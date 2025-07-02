@@ -22,7 +22,7 @@ export const OtherPayment = () => {
         }}
       >
         <button className="button button_accent" onClick={() => console.log('CREATE')}>
-          {language === 'en' ? 'Create request' : 'Связаться с менеджером'}
+          {language === 'en' ? 'Contact the manager' : 'Связаться с менеджером'}
         </button>
       </div>
     </div>

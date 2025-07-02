@@ -72,8 +72,8 @@ export const CashToCrypto = () => {
         <div style={{ marginTop: '1rem' }}>
           <p className="text text_h4">
             {language === 'en'
-              ? 'Select a city to receive from the list'
-              : 'Выбери город пополнения безналичного счета'}
+              ? 'Select the city where you will give cash'
+              : 'Выбери город, в котором  отдашь наличные '}
           </p>
           <AutocompleteSelect
             options={cityOptions}
