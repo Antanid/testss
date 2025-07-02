@@ -378,7 +378,7 @@ header.open {
   $scroll_top_btn_size: clmp(2.3rem, 3.2rem);
   position: fixed;
   bottom: 90px;
-  right: 20px;
+  left: calc(100vw - 72px);
 
   display: flex;
   flex-direction: column;
