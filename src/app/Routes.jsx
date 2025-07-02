@@ -31,9 +31,9 @@ const AppRoutes = () => {
       <Route
         path="/exchange"
         element={
-          // <ProtectedRoute>
-          <ExchangerPage />
-          // </ProtectedRoute>
+          <ProtectedRoute>
+            <ExchangerPage />
+          </ProtectedRoute>
         }
       />
 
