@@ -44,6 +44,8 @@ export const CryptoExchangeRisk = () => {
           commissionRate={commissionRate}
           formatNumber={formatNumber}
           swapCurrency={swapCurrency}
+          setSendCurrency={setSendCurrency}
+          setGetCurrency={setGetCurrency}
         />
 
         <div style={{ marginTop: '1rem' }}>
